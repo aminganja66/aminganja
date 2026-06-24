@@ -18,6 +18,18 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   generator: 'v0.app',
+  authors: [{ name: 'Amin Ganja' }],
+  keywords: [
+    'Flutter developer',
+    'Supabase BaaS',
+    'mobile app development',
+    'MVP development',
+    'Flutter Supabase',
+    'startup app development',
+    'Flutter developer India',
+    'AI-augmented development',
+  ],
+  robots: { index: true, follow: true },
   alternates: {
     canonical: `${siteUrl}/`,
   },
@@ -33,6 +45,9 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     images: ['/og-image.png'],
+  },
+  other: {
+    'theme-color': '#0a0a0a',
   },
   icons: {
     icon: [
@@ -59,6 +74,7 @@ const jsonLd = {
   name: 'Amin Ganja',
   jobTitle: 'Flutter Developer',
   url: `${siteUrl}/`,
+  email: 'amin.ganja@outlook.com',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ahmedabad',
@@ -77,13 +93,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

@@ -128,10 +128,6 @@ export default function Contact() {
                   LinkedIn
                 </a>
                 <span className="text-gray-600">·</span>
-                <a href="#" target="_blank" className="text-white hover:text-accent transition-colors">
-                  Twitter
-                </a>
-                <span className="text-gray-600">·</span>
                 <a href="https://github.com/aminganja66" target="_blank" className="text-white hover:text-accent transition-colors">
                   GitHub
                 </a>
@@ -142,7 +138,7 @@ export default function Contact() {
           {/* Footer */}
           <div className="text-center pt-8 border-t border-white/10">
             <p className="text-gray-500 text-sm">
-              © 2024 Your Name. All rights reserved. | Made with passion for founders.
+              © 2025 Amin Ganja. All rights reserved. | Made with passion for founders.
             </p>
           </div>
         </div>
