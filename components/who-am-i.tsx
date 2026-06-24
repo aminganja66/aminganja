@@ -19,11 +19,11 @@ export default function WhoAmI() {
             {/* Main intro */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Hi, I&apos;m Amin.
+                Hi, I&apos;m Amin Ganja — Flutter Developer in Ahmedabad.
               </h2>
 
               <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                I help startup founders transform ideas into production-ready MVPs—without the complexity of hiring and managing a full development team.
+                I help startup founders ship production-ready mobile apps without hiring a full development team. With 4+ years of Flutter development experience, I build everything from UI to backend — using Supabase as BaaS for auth, database, storage, and real-time features.
               </p>
             </div>
 
@@ -35,7 +35,7 @@ export default function WhoAmI() {
                 </div>
                 <div>
                   <p className="text-gray-300 text-sm md:text-base">
-                    <span className="font-semibold text-white">4+ years</span> building mobile apps, business systems, and SaaS products with Flutter, Supabase, and AI tools
+                    <span className="font-semibold text-white">4+ Years Flutter</span>
                   </p>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default function WhoAmI() {
                 </div>
                 <div>
                   <p className="text-gray-300 text-sm md:text-base">
-                    <span className="font-semibold text-white">Fast validation</span> — build only what&apos;s needed to test your hypothesis and attract early users
+                    <span className="font-semibold text-white">Supabase BaaS Expert</span>
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function WhoAmI() {
                 </div>
                 <div>
                   <p className="text-gray-300 text-sm md:text-base">
-                    <span className="font-semibold text-white">Scalable foundations</span> — solid code that grows with your business
+                    <span className="font-semibold text-white">AI-Augmented Development</span>
                   </p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function WhoAmI() {
             {/* Main value prop */}
             <div className="pt-4 border-t border-white/10">
               <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                Whether you&apos;re a non-technical founder or a startup looking to accelerate, I transform your vision into working products in <span className="font-semibold text-white">weeks, not months.</span> My approach is simple: understand the problem, build only what matters for validation, and deliver a solid foundation that scales.
+                I work with AI tools to move fast — but this isn&apos;t vibe coding. Every app is built with Clean Architecture, BLoC state management, and a scalable Supabase backend. I call it AI-Augmented Development: the speed of AI with the discipline of a senior engineer.
               </p>
             </div>
 

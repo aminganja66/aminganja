@@ -18,14 +18,15 @@ export default function Hero() {
         {/* Main Headline */}
         <div className="space-y-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center text-balance leading-tight">
-            Launch Your MVP in <br className="hidden md:block" />
-            <span className="text-5xl md:text-7xl lg:text-8xl">4–6 Weeks</span>
+            Flutter Developer in Ahmedabad —{' '}
+            <br className="hidden md:block" />
+            Helping Founders Ship Mobile MVPs Fast
           </h1>
         </div>
 
         {/* Subtext */}
         <p className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto text-balance">
-          I help founders turn ideas into working products — without hiring a full development team.
+          I help startup founders turn ideas into production-ready mobile apps using Flutter and Supabase as BaaS. AI-Augmented development with 4+ years of real experience — not vibe coding.
         </p>
 
         {/* Auto-scrolling Tech Stack */}

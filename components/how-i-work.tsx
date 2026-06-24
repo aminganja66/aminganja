@@ -32,6 +32,10 @@ export default function HowIWork() {
   return (
     <section id="how-i-work" className="w-full bg-background px-4 md:px-8 py-16 md:py-24 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto w-full">
+        <p className="text-base md:text-lg text-gray-300 mb-4">
+          How I build Flutter + Supabase MVPs for startup founders:
+        </p>
+
         {/* Section label */}
         <div className="text-xs md:text-sm text-gray-400 font-semibold tracking-widest uppercase mb-12 md:mb-16">
           The Process

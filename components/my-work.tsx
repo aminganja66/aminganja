@@ -1,29 +1,10 @@
 export default function MyWork() {
-  const caseStudies = [
-    {
-      id: 1,
-      title: 'FinTech SaaS Platform',
-      description: 'Built a real-time financial dashboard for SMBs with automated reporting.',
-      tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      metrics: '50K+ users',
-      image: '🏦',
-    },
-    {
-      id: 2,
-      title: 'Mobile Fitness App',
-      description: 'Flutter app with AI-powered workout recommendations and community features.',
-      tech: ['Flutter', 'Firebase', 'TensorFlow'],
-      metrics: '100K downloads',
-      image: '💪',
-    },
-    {
-      id: 3,
-      title: 'SaaS Analytics Tool',
-      description: 'Real-time analytics platform for e-commerce businesses with custom dashboards.',
-      tech: ['Next.js', 'Supabase', 'TypeScript'],
-      metrics: '200% growth',
-      image: '📊',
-    },
+  const tech = ['Flutter', 'Supabase', 'BLoC', 'GoRouter', 'GetIt', 'OneSignal']
+  const stats = [
+    '12+ Database Tables',
+    '44+ Supabase RPCs',
+    '3 User Roles',
+    'Multi-Society Support',
   ]
 
   return (
@@ -43,35 +24,59 @@ export default function MyWork() {
             <h2 className="text-3xl md:text-5xl font-bold text-white">Recent Case Studies</h2>
           </div>
 
-          {/* Case studies grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {caseStudies.map((study) => (
-              <div
-                key={study.id}
-                className="group p-6 md:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <div className="text-4xl md:text-5xl mb-4">{study.image}</div>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-                  {study.title}
-                </h3>
-                <p className="text-gray-400 text-sm md:text-base mb-4 leading-relaxed">
-                  {study.description}
+          {/* SocietyLedger case study */}
+          <div className="group p-6 md:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 hover:border-white/20 transition-all duration-300">
+            {/* Tag */}
+            <div className="mb-4">
+              <span className="px-2 py-1 text-xs bg-white/10 border border-white/20 text-gray-300 rounded-lg">
+                Case Study · In Progress
+              </span>
+            </div>
+
+            {/* Title + one-liner */}
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">SocietyLedger</h3>
+            <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
+              Society management and expense tracking app for residential communities in India.
+            </p>
+
+            {/* Problem / Solution */}
+            <div className="space-y-4 mb-6">
+              <div>
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1">Problem</p>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Residential societies had no simple way to manage maintenance dues, payments, member records, and announcements across multiple flats and roles.
                 </p>
-                <div className="space-y-3">
-                  <div className="flex flex-wrap gap-2">
-                    {study.tech.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 text-xs bg-white/10 border border-white/20 text-gray-300 rounded-lg"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-accent font-semibold">{study.metrics}</p>
-                </div>
               </div>
-            ))}
+              <div>
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1">Solution</p>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  A multi-role Flutter mobile app with Super Admin, Society Admin, and Member/Tenant roles. Real-time data, push notifications, maintenance payment tracking, and full Supabase backend.
+                </p>
+              </div>
+            </div>
+
+            {/* Tech chips */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {tech.map((t) => (
+                <span key={t} className="px-2 py-1 text-xs bg-white/10 border border-white/20 text-gray-300 rounded-lg">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              {stats.map((stat) => (
+                <div key={stat} className="p-3 rounded-xl border border-white/10 bg-white/5 text-center">
+                  <p className="text-xs md:text-sm font-semibold text-white">{stat}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom note */}
+            <p className="text-sm text-accent font-semibold">
+              Full case study coming soon — MVP architecture complete.
+            </p>
           </div>
         </div>
       </div>

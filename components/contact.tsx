@@ -138,7 +138,7 @@ export default function Contact() {
           {/* Footer */}
           <div className="text-center pt-8 border-t border-white/10">
             <p className="text-gray-500 text-sm">
-              © 2025 Amin Ganja. All rights reserved. | Made with passion for founders.
+              © 2025 Amin Ganja · Flutter Developer, Ahmedabad, India · Flutter + Supabase MVP Development for Startups
             </p>
           </div>
         </div>

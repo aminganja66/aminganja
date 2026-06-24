@@ -22,6 +22,9 @@ export default function Page() {
         <HowIWork />
         <WhyMe />
         <Contact />
+        <div className="sr-only">
+          Amin Ganja is a Flutter developer based in Ahmedabad, Gujarat, India. Specializing in Flutter and Supabase BaaS mobile app development for startup founders. Services include MVP development, mobile app development, SaaS platform development, admin dashboards, AI feature integration, and Supabase backend architecture. AI-Augmented development approach with 4+ years of Flutter experience. Available for remote Flutter developer positions and MVP projects.
+        </div>
       </main>
     </div>
   )

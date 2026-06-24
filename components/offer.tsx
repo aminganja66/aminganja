@@ -4,6 +4,7 @@ export default function Offer() {
   const packages = [
     {
       name: 'MVP Launch Package',
+      tagline: 'Full-stack Flutter + Supabase mobile app — from zero to App Store.',
       description: 'Perfect for founders ready to validate their idea',
       badge: 'MOST POPULAR',
       highlighted: true,
@@ -19,6 +20,7 @@ export default function Offer() {
     },
     {
       name: 'Growth Package',
+      tagline: 'Scale your Flutter MVP with AI features, payments, and advanced Supabase backend.',
       description: 'Scale your MVP with advanced features',
       badge: 'ACCELERATE',
       highlighted: false,
@@ -33,6 +35,7 @@ export default function Offer() {
     },
     {
       name: 'Long-Term Partnership',
+      tagline: 'Ongoing Flutter development and Supabase backend support as your startup grows.',
       description: 'Ongoing support as you scale',
       badge: 'SUPPORT',
       highlighted: false,
@@ -100,6 +103,9 @@ export default function Offer() {
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {pkg.name}
                   </h3>
+                  <p className="text-xs md:text-sm text-gray-300 font-medium">
+                    {pkg.tagline}
+                  </p>
                   <p className="text-sm md:text-base text-gray-400">
                     {pkg.description}
                   </p>
