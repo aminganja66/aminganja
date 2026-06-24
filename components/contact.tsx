@@ -40,10 +40,10 @@ export default function Contact() {
                 <span className="text-xs text-white font-semibold">05</span>
               </div>
             </div>
-            <h2 className="text-sm md:text-base text-gray-400 font-semibold uppercase tracking-wide">
+            <p className="text-sm md:text-base text-gray-400 font-semibold uppercase tracking-wide">
               Get in Touch
-            </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white">Let&apos;s Talk</h3>
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white">Let&apos;s Talk</h2>
             <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto">
               Have an idea? Let&apos;s discuss how I can help bring it to life.
             </p>
@@ -54,7 +54,7 @@ export default function Contact() {
             {submitted ? (
               <div className="text-center py-8">
                 <div className="text-4xl mb-4">✓</div>
-                <h4 className="text-xl font-bold text-white mb-2">Message Sent!</h4>
+                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
                 <p className="text-gray-400">Thanks for reaching out. I&apos;ll get back to you soon.</p>
               </div>
             ) : (
@@ -116,13 +116,13 @@ export default function Contact() {
           {/* Contact info */}
           <div className="grid md:grid-cols-2 gap-8 text-center md:text-left">
             <div className="p-6 rounded-xl border border-white/10 bg-white/5">
-              <h4 className="text-sm text-gray-400 uppercase tracking-wide mb-2">Email</h4>
+              <h3 className="text-sm text-gray-400 uppercase tracking-wide mb-2">Email</h3>
               <a href="mailto:amin.ganja@outlook.com" className="text-lg font-semibold text-white hover:text-accent transition-colors">
                 amin.ganja@outlook.com
               </a>
             </div>
             <div className="p-6 rounded-xl border border-white/10 bg-white/5">
-              <h4 className="text-sm text-gray-400 uppercase tracking-wide mb-2">Social</h4>
+              <h3 className="text-sm text-gray-400 uppercase tracking-wide mb-2">Social</h3>
               <div className="flex gap-4 justify-center md:justify-start">
                 <a href="https://www.linkedin.com/in/amin-ganja" target="_blank" className="text-white hover:text-accent transition-colors">
                   LinkedIn

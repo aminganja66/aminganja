@@ -36,11 +36,11 @@ export default function MyWork() {
               <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                 <span className="text-xs text-white font-semibold">02</span>
               </div>
-              <h2 className="text-sm md:text-base text-gray-400 font-semibold uppercase tracking-wide">
+              <p className="text-sm md:text-base text-gray-400 font-semibold uppercase tracking-wide">
                 My Work
-              </h2>
+              </p>
             </div>
-            <h3 className="text-3xl md:text-5xl font-bold text-white">Recent Case Studies</h3>
+            <h2 className="text-3xl md:text-5xl font-bold text-white">Recent Case Studies</h2>
           </div>
 
           {/* Case studies grid */}
@@ -51,9 +51,9 @@ export default function MyWork() {
                 className="group p-6 md:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-pointer"
               >
                 <div className="text-4xl md:text-5xl mb-4">{study.image}</div>
-                <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
                   {study.title}
-                </h4>
+                </h3>
                 <p className="text-gray-400 text-sm md:text-base mb-4 leading-relaxed">
                   {study.description}
                 </p>

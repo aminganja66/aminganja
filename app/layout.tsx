@@ -9,10 +9,31 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const siteUrl = 'https://amin-ganja.vercel.app'
+const siteTitle = 'Amin Ganja — Flutter Developer | Mobile Apps & Supabase BaaS'
+const siteDescription =
+  'I help founders ship mobile apps fast using Flutter and Supabase as BaaS. AI-Augmented development with 4+ years of experience. Based in Ahmedabad, India.'
+
 export const metadata: Metadata = {
-  title: 'Portfolio | MVP Developer for Startups',
-  description: 'I help startup and SaaS founders turn ideas into working products in 4-6 weeks',
+  title: siteTitle,
+  description: siteDescription,
   generator: 'v0.app',
+  alternates: {
+    canonical: `${siteUrl}/`,
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: `${siteUrl}/`,
+    images: [{ url: '/og-image.png' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: ['/og-image.png'],
+  },
   icons: {
     icon: [
       {
@@ -32,6 +53,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Amin Ganja',
+  jobTitle: 'Flutter Developer',
+  url: `${siteUrl}/`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ahmedabad',
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/amin-ganja',
+    'https://github.com/aminganja66',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,6 +80,10 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   )
