@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Tags -->
+<title>Society Ledger — Flutter + Supabase Case Study | Amin Ganja</title>
+<meta name="description" content="How I built a full-stack society management mobile app with Flutter, Supabase, and Clean Architecture — solving real maintenance payment problems for Indian residential societies.">
+<meta name="keywords" content="Flutter developer India, Flutter Supabase case study, Flutter clean architecture, BLoC pattern Flutter, mobile app developer Ahmedabad, Flutter PostgreSQL, society management app, Flutter developer portfolio">
+<meta name="author" content="Amin Ganja">
+
+<!-- Open Graph -->
+<meta property="og:title" content="My Society Ledger — Flutter Case Study">
+<meta property="og:description" content="Full-stack Flutter app built with Supabase, BLoC, Clean Architecture, and 44 PostgreSQL RPCs. Solving real problems for Indian residential societies.">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --indigo:     #4338CA;
+  --indigo-l:   #6366F1;
+  --indigo-d:   #3730A3;
+  --soft:       #EEF2FF;
+  --white:      #FFFFFF;
+  --off:        #F9FAFB;
+  --text:       #111827;
+  --muted:      #6B7280;
+  --border:     #E5E7EB;
+  --green:      #10B981;
+  --amber:      #F59E0B;
+  --red:        #EF4444;
+  --mono:       'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+a { color: var(--indigo); text-decoration: none; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+.nav-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-dot {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-l));
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--indigo); }
+.nav-cta {
+  background: var(--indigo);
+  color: var(--white) !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.nav-cta:hover { background: var(--indigo-d) !important; color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  padding: 96px 48px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.hero-breadcrumb span { color: var(--border); }
+.hero-tag {
+  display: inline-block;
+  background: var(--soft);
+  color: var(--indigo);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #C7D2FE;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: var(--text);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-l));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-intro {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.meta-value { font-size: 14px; font-weight: 600; color: var(--text); }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--indigo-d);
+  padding: 40px 48px;
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+}
+.stat-item { text-align: center; }
+.stat-n {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-n em {
+  font-style: normal;
+  color: #818CF8;
+  font-size: 28px;
+}
+.stat-l { font-size: 12px; color: #A5B4FC; font-weight: 500; }
+
+/* ── CONTENT SECTIONS ── */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--indigo-l);
+  background: var(--soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-top: 6px;
+}
+.section-title-block h2 {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.section-title-block p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+/* ── PROBLEM ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+@media(max-width:640px) { .problem-grid { grid-template-columns: 1fr; } }
+
+.problem-card {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.problem-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.problem-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+.insight-box {
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  border-radius: 14px;
+  padding: 24px 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.insight-box p { font-size: 14px; color: #92400E; line-height: 1.65; }
+.insight-box strong { color: #78350F; }
+
+/* ── SOLUTION ── */
+.solution-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 40px;
+}
+.flow-step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px dashed var(--border);
+  position: relative;
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--indigo-l);
+  background: var(--soft);
+  border: 1px solid #C7D2FE;
+  border-radius: 8px;
+  padding: 6px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.flow-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.flow-content p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── DECISIONS ── */
+.decision-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.decision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  transition: box-shadow .2s;
+}
+.decision:hover { box-shadow: 0 8px 32px rgba(67,56,202,.08); }
+@media(max-width:640px) { .decision { grid-template-columns: 1fr; } }
+.decision-left {}
+.decision-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--indigo-l);
+  margin-bottom: 8px;
+}
+.decision h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.decision p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.decision-right {
+  background: var(--off);
+  border-radius: 10px;
+  padding: 18px;
+}
+.decision-right .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.code-line {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.8;
+}
+.code-line .key   { color: var(--indigo-l); }
+.code-line .val   { color: var(--green); }
+.code-line .com   { color: #9CA3AF; }
+.code-line .str   { color: var(--amber); }
+
+/* ── TECH STACK ── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.stack-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.stack-card:hover {
+  border-color: #C7D2FE;
+  box-shadow: 0 4px 16px rgba(67,56,202,.06);
+}
+.stack-cat {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--indigo-l);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stack-name { font-size: 15px; font-weight: 700; color: var(--text); }
+.stack-why  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── SCHEMA ── */
+.schema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.table-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table-head {
+  background: var(--indigo);
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+}
+.table-body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.col-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.col-name { font-family: var(--mono); font-size: 11px; color: var(--text); font-weight: 500; }
+.col-type { font-family: var(--mono); font-size: 10px; color: #A5B4FC; }
+.col-pk   { color: var(--indigo-l); font-weight: 700; }
+
+/* ── RESULTS ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.result-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--indigo), var(--indigo-l));
+}
+.result-n {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--indigo);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.result-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.result-sub   { font-size: 12px; color: var(--muted); }
+
+/* ── LEARNINGS ── */
+.learning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.learning {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 24px;
+  background: var(--off);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.learning-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.learning h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.learning p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--indigo-d);
+  padding: 80px 48px;
+  text-align: center;
+}
+.cta-section h2 {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 16px;
+  color: #A5B4FC;
+  margin-bottom: 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+.cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--white);
+  color: var(--indigo-d);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: opacity .2s;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,.3);
+  transition: background .2s;
+}
+.btn-primary:hover { opacity: .9; color: var(--indigo-d); }
+.btn-outline:hover { background: rgba(255,255,255,.1); color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-left { font-size: 13px; color: #9CA3AF; }
+.footer-left strong { color: var(--white); }
+.footer-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer-chip {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: #9CA3AF;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero, .content, .cta-section { padding-left: 24px; padding-right: 24px; }
+  .stats-bar { padding: 32px 24px; }
+  footer { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-dot">🏢</div>
+    My Society Ledger
+  </div>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#ai">AI Dev</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#results">Outcomes</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-breadcrumb">
+    <a href="/">Portfolio</a>
+    <span>/</span>
+    <span>Case Study</span>
+  </div>
+  <div class="hero-tag">Case Study — Flutter + Supabase</div>
+  <h1>Building <em>trust</em> between society committee and members through a Flutter app</h1>
+  <p class="hero-intro">
+    A full-stack mobile application for Indian residential societies — digitising
+    maintenance collection, expense tracking, and member communication.
+    Built solo with Flutter, Supabase, BLoC + Clean Architecture, and 44 PostgreSQL RPCs.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Timeline</span>
+      <span class="meta-value">6 Months</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Role</span>
+      <span class="meta-value">Solo — Full Stack</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Platform</span>
+      <span class="meta-value">Android + iOS</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Stack</span>
+      <span class="meta-value">Flutter · Supabase · PostgreSQL</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Architecture</span>
+      <span class="meta-value">BLoC + Clean Architecture</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-n">12</div>
+      <div class="stat-l">Database Tables</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">44</div>
+      <div class="stat-l">Supabase RPCs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">3</div>
+      <div class="stat-l">User Roles</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Raw DB Queries in Flutter</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">100<em>%</em></div>
+      <div class="stat-l">RPC-Based Architecture</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- PROBLEM -->
+  <section class="section" id="problem">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div class="section-title-block">
+        <h2>The Problem — Trust Breaks Every Month</h2>
+        <p>Indian residential societies manage hundreds of flats with no dedicated software. The result is the same argument, every month, between good people who simply lack a shared source of truth.</p>
+      </div>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h3>💬 Payment proofs lost in WhatsApp</h3>
+        <p>Members send screenshots to a 300-message group chat. Admins scroll for 45 minutes verifying who paid. One missing screenshot becomes a month-long dispute.</p>
+      </div>
+      <div class="problem-card">
+        <h3>⚔️ Monthly disputes between neighbours</h3>
+        <p>"Mera toh paid hai!" The admin can't verify. The member can't prove it. Trust between committee and residents erodes over time — not from bad intent but from missing information.</p>
+      </div>
+      <div class="problem-card">
+        <h3>📊 Zero expense transparency</h3>
+        <p>Society funds are spent with no digital trail. Members have no way to see where their maintenance money goes. Suspicion builds. Meetings get heated.</p>
+      </div>
+      <div class="problem-card">
+        <h3>🕐 45 minutes of manual work per month</h3>
+        <p>Society admin cross-references WhatsApp, Excel, and bank statements every month by hand. No automation. No audit trail. Completely dependent on one person's memory.</p>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <span style="font-size:24px;">💡</span>
+      <p><strong>Core insight:</strong> The problem is not bad people — it is a missing system. When everyone can see the same truth, arguments become structurally impossible. The solution needed to be built around transparency as a first principle, not as a feature.</p>
+    </div>
+  </section>
+
+
+  <!-- SOLUTION -->
+  <section class="section" id="solution">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div class="section-title-block">
+        <h2>The Solution — One Source of Truth for Everyone</h2>
+        <p>My Society Ledger digitises every step of the maintenance cycle. From admin generating dues to member uploading proof to admin approving — all in one app, with full visibility for every party.</p>
+      </div>
+    </div>
+
+    <div class="solution-flow">
+      <div class="flow-step">
+        <span class="flow-num">STEP 01</span>
+        <div class="flow-content">
+          <h3>Admin configures society once</h3>
+          <p>Set maintenance amounts for owners and tenants separately. Configure due dates, penalty amounts, and grace periods. System generates 12 months of dues for all flats automatically — zero manual work every month.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">STEP 02</span>
+        <div class="flow-content">
+          <h3>Members get a permanent digital record</h3>
+          <p>Members see their dues, due dates, and history in one place. They pay via UPI or bank as usual — then upload the screenshot in 30 seconds. Single month or multiple months in one submission. Partial payments supported for large fees.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">STEP 03</span>
+        <div class="flow-content">
+          <h3>Admin approves with one tap</h3>
+          <p>Admin views the proof image, approves or rejects with a note. Push notification sent to member instantly. Approved records are permanent — tamper-proof, searchable, always available. "Did I pay?" is answered in seconds.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">STEP 04</span>
+        <div class="flow-content">
+          <h3>Both sides always see the same truth</h3>
+          <p>Admin sees every flat's 12-month payment status on one screen. Members see their full history. Society expenses are visible to all members. When everyone sees the same data, disputes cannot exist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROCESS -->
+  <section class="section" id="process">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div class="section-title-block">
+        <h2>The Process — How We Built It</h2>
+        <p>A structured, step-by-step development process. Every decision reviewed before implementation. No code written without a clear plan.</p>
+      </div>
+    </div>
+
+    <div class="solution-flow">
+      <div class="flow-step">
+        <span class="flow-num">PHASE 01</span>
+        <div class="flow-content">
+          <h3>Problem definition and MVP scoping</h3>
+          <p>Started with the real problem — not a feature list. Mapped every pain point in the existing WhatsApp + Excel workflow. Cut the initial feature list from 10 to 3 core flows: auth, flat management, and maintenance cycle. Everything else was deferred. Ship something focused rather than build everything and ship nothing.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">PHASE 02</span>
+        <div class="flow-content">
+          <h3>Schema design — entities vs events</h3>
+          <p>Designed the database to answer two questions: who exists, and what happened. Started with 4 tables. Discovered quickly that there was no place to store events — payment submissions, approvals, expenses. Rebuilt to 12 tables. The key insight: dues and payments are different tables because they have different lifecycles, different creators, and different data.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">PHASE 03</span>
+        <div class="flow-content">
+          <h3>RPC-first backend — all logic in PostgreSQL</h3>
+          <p>Decided early that Flutter would contain zero business logic. Every operation — creating a flat, submitting proof, approving a payment — is a single Supabase RPC. RPCs run as SECURITY DEFINER, handle validation, execute atomically, and return exactly what Flutter needs. 44 RPCs written and tested before the UI was touched.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">PHASE 04</span>
+        <div class="flow-content">
+          <h3>Clean Architecture + BLoC — feature first</h3>
+          <p>Feature-first folder structure with strict layer separation. Every feature has data, domain, and presentation layers. BLoC split into three files — bloc, event, state. Repository returns Either&lt;Failure, T&gt; via dartz. No exceptions reach the UI. Each feature is independently testable and replaceable.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">PHASE 05</span>
+        <div class="flow-content">
+          <h3>Iterative feature expansion — with review at every step</h3>
+          <p>New requirements arrived mid-build — tenants, multi-society support, additional fees, multi-month payments, penalty config. Each addition was planned, reviewed, and then implemented. Multi-month payments is a good example: the initial plan suggested two new tables. After review, a single column on the existing table solved it cleanly. Review before build saved the schema multiple times.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">PHASE 06</span>
+        <div class="flow-content">
+          <h3>Push notifications + production readiness</h3>
+          <p>OneSignal integrated with multi-device support — player_ids stored as a TEXT array per user, appended on login and removed on logout. RPCs return notification payload directly so Flutter just reads and sends. Finally, a dev-to-prod migration plan created using Supabase CLI schema dump — ensuring production matches development exactly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI AUGMENTED DEVELOPMENT -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div class="section-title-block">
+        <h2>AI-Augmented Development with Claude</h2>
+        <p>This project was built using AI-augmented development — not vibe coding. Every AI suggestion was reviewed, challenged, and understood before implementation.</p>
+      </div>
+    </div>
+
+    <div class="insight-box" style="margin-bottom:32px;">
+      <span style="font-size:24px;">🤖</span>
+      <p><strong>AI-augmented development is not "AI writes my code."</strong> It is using AI as a product manager, architect, and senior reviewer that pressure-tests your decisions before you commit to them. The developer still owns every decision — AI accelerates the thinking, not the typing.</p>
+    </div>
+
+    <div class="decision-list">
+
+      <div class="decision">
+        <div class="decision-left">
+          <div class="decision-tag">Claude as Product Manager</div>
+          <h3>Planning features before touching code</h3>
+          <p>Every feature was described in plain English first. Claude returned edge cases, failure scenarios, and user flow issues before a single line was written. The multi-society problem — where the same user could be admin in one society and member in another — was caught in planning, not in production.</p>
+        </div>
+        <div class="decision-right" style="display:flex;flex-direction:column;gap:12px;justify-content:center;">
+          <div style="background:rgba(67,56,202,.06);border:1px solid #C7D2FE;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--indigo-l);margin-bottom:6px;">INPUT</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">"I want to add role to the users table so each user has one role globally"</div>
+          </div>
+          <div style="background:rgba(16,185,129,.06);border:1px solid #A7F3D0;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:6px;">CHALLENGE RECEIVED</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">"What if the same user is admin in Society A and member in Society B?"</div>
+          </div>
+          <div style="background:rgba(67,56,202,.06);border:1px solid #C7D2FE;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--indigo-l);margin-bottom:6px;">RESULT</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Role moved to user_flats — scoped per flat, per society. Multi-society unlocked.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="decision-left">
+          <div class="decision-tag">Claude as Backend Engineer</div>
+          <h3>44 RPCs written, reviewed, and deployed</h3>
+          <p>Supabase RPCs were written with Claude Code using the MCP server — which reads the live database schema before generating any function. Each RPC was reviewed line by line before deployment. Not blindly accepted — every guard, every JOIN, every return value was understood before it touched production.</p>
+        </div>
+        <div class="decision-right" style="display:flex;flex-direction:column;gap:8px;justify-content:center;">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;font-family:var(--mono);letter-spacing:1px;">WORKFLOW PER RPC</div>
+          <div class="flow-step" style="padding:10px 0;border-bottom:1px dashed var(--border);">
+            <span style="font-family:var(--mono);font-size:10px;color:var(--indigo-l);background:var(--soft);padding:3px 8px;border-radius:5px;white-space:nowrap;">01</span>
+            <span style="font-size:12px;color:var(--muted);">Describe what the RPC should do</span>
+          </div>
+          <div class="flow-step" style="padding:10px 0;border-bottom:1px dashed var(--border);">
+            <span style="font-family:var(--mono);font-size:10px;color:var(--indigo-l);background:var(--soft);padding:3px 8px;border-radius:5px;white-space:nowrap;">02</span>
+            <span style="font-size:12px;color:var(--muted);">Claude reads live schema via MCP</span>
+          </div>
+          <div class="flow-step" style="padding:10px 0;border-bottom:1px dashed var(--border);">
+            <span style="font-family:var(--mono);font-size:10px;color:var(--indigo-l);background:var(--soft);padding:3px 8px;border-radius:5px;white-space:nowrap;">03</span>
+            <span style="font-size:12px;color:var(--muted);">Review SQL before approving</span>
+          </div>
+          <div class="flow-step" style="padding:10px 0;">
+            <span style="font-family:var(--mono);font-size:10px;color:var(--indigo-l);background:var(--soft);padding:3px 8px;border-radius:5px;white-space:nowrap;">04</span>
+            <span style="font-size:12px;color:var(--muted);">Deploy directly to Supabase</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="decision-left">
+          <div class="decision-tag">Knowing When to Push Back</div>
+          <h3>AI suggestions are starting points, not final answers</h3>
+          <p>When implementing multi-month maintenance payments, Claude suggested creating two new tables. After reviewing the plan, it was clear that a single <code style="font-family:var(--mono);font-size:12px;background:var(--soft);padding:2px 6px;border-radius:4px;">group_id</code> column on the existing payments table solved the problem completely. The ability to review and challenge AI output is what separates AI-augmented development from blindly generated code.</p>
+        </div>
+        <div class="decision-right" style="display:flex;flex-direction:column;gap:12px;justify-content:center;">
+          <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">INITIAL SUGGESTION</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Create 2 new tables for multi-month payment grouping — more complex schema</div>
+          </div>
+          <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px;">REVIEWED + CHALLENGED</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">"Can we just add group_id to the existing payments table?"</div>
+          </div>
+          <div style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:6px;">FINAL SOLUTION</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">1 tiny table + 1 column. Same result. Far simpler schema. ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="decision-left">
+          <div class="decision-tag">Claude as Flutter Engineer</div>
+          <h3>Clean Architecture prompts with strict rules</h3>
+          <p>Claude Code was used inside the IDE with strict rules embedded in every prompt — max 200 lines per file, one class per file, BLoC split into three files, all colors from AppColors, all RPC names from RpcConstants. AI accelerated feature development while the architecture rules enforced quality. Speed without compromise.</p>
+        </div>
+        <div class="decision-right" style="display:flex;flex-direction:column;gap:6px;justify-content:center;">
+          <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:var(--mono);letter-spacing:1px;margin-bottom:4px;">STRICT RULES IN EVERY PROMPT</div>
+          <div class="code-line"><span class="com">// enforced by prompt, not hope</span></div>
+          <div class="code-line"><span class="key">max_lines_per_file</span>: <span class="val">200</span></div>
+          <div class="code-line"><span class="key">classes_per_file</span>: <span class="val">1</span></div>
+          <div class="code-line"><span class="key">bloc_files</span>: <span class="str">bloc | event | state</span></div>
+          <div class="code-line"><span class="key">colors</span>: <span class="str">AppColors only</span></div>
+          <div class="code-line"><span class="key">rpc_names</span>: <span class="str">RpcConstants only</span></div>
+          <div class="code-line"><span class="key">repo_return</span>: <span class="str">Either&lt;Failure, T&gt;</span></div>
+          <div class="code-line"><span class="key">business_logic</span>: <span class="str">BLoC only</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TECH STACK -->
+  <section class="section" id="stack">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div class="section-title-block">
+        <h2>Tech Stack</h2>
+        <p>Every tool chosen for a specific reason — not because it was popular.</p>
+      </div>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <span class="stack-cat">Mobile</span>
+        <span class="stack-name">Flutter</span>
+        <span class="stack-why">Single codebase for Android + iOS. Strong typing. Excellent widget system.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">State Management</span>
+        <span class="stack-name">flutter_bloc</span>
+        <span class="stack-why">Predictable state. Testable. Clear separation of UI and business logic.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Backend + DB</span>
+        <span class="stack-name">Supabase</span>
+        <span class="stack-why">PostgreSQL with auth, storage, and realtime. Managed. Production-ready.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Database</span>
+        <span class="stack-name">PostgreSQL 17</span>
+        <span class="stack-why">44 SECURITY DEFINER RPCs. All logic server-side. Zero raw queries in Flutter.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Auth</span>
+        <span class="stack-name">Phone OTP + Twilio</span>
+        <span class="stack-why">No passwords. Members login with the phone number admin registered.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">DI</span>
+        <span class="stack-name">GetIt + Injectable</span>
+        <span class="stack-why">Compile-time dependency injection. No service locator anti-patterns.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Navigation</span>
+        <span class="stack-name">GoRouter</span>
+        <span class="stack-why">Role-based route guards. Deep linking. Declarative navigation.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">FP</span>
+        <span class="stack-name">dartz</span>
+        <span class="stack-why">Either&lt;Failure, T&gt; for all repository methods. No uncaught exceptions.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Codegen</span>
+        <span class="stack-name">Freezed + JsonSerializable</span>
+        <span class="stack-why">Immutable models. copyWith. Exhaustive pattern matching on states.</span>
+      </div>
+      <div class="stack-card">
+        <span class="stack-cat">Push</span>
+        <span class="stack-name">OneSignal</span>
+        <span class="stack-why">Free tier. REST API for targeted delivery. Multi-device array support.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- OUTCOMES -->
+  <section class="section" id="results">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div class="section-title-block">
+        <h2>Outcomes and Learnings</h2>
+        <p>Six months of solo development. A production-ready app. These are the things that actually mattered.</p>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-n">12</div>
+        <div class="result-label">Database Tables</div>
+        <div class="result-sub">All with RLS enabled</div>
+      </div>
+      <div class="result-card">
+        <div class="result-n">44</div>
+        <div class="result-label">PostgreSQL RPCs</div>
+        <div class="result-sub">Zero raw queries in Flutter</div>
+      </div>
+      <div class="result-card">
+        <div class="result-n">3</div>
+        <div class="result-label">User Roles</div>
+        <div class="result-sub">Super admin, admin, member/tenant</div>
+      </div>
+      <div class="result-card">
+        <div class="result-n">6</div>
+        <div class="result-label">Months Solo Build</div>
+        <div class="result-sub">Idea to production-ready</div>
+      </div>
+    </div>
+
+    <div class="learning-list">
+      <div class="learning">
+        <span class="learning-icon">🧠</span>
+        <div>
+          <h4>Plan first. Build second. Always.</h4>
+          <p>Every feature was described and reviewed before a line of code was written. The multi-month payment feature is the clearest example — initial plan suggested two new tables, review revealed one column was enough. The review step is where most of the value was created.</p>
+        </div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">🏗️</span>
+        <div>
+          <h4>Early architecture decisions compound over time</h4>
+          <p>Putting role in <code style="font-family:var(--mono);font-size:12px;background:var(--soft);padding:2px 6px;border-radius:4px;">user_flats</code> instead of <code style="font-family:var(--mono);font-size:12px;background:var(--soft);padding:2px 6px;border-radius:4px;">users</code> was a week-one decision that made multi-society support straightforward in month four. Good architecture choices pay compound interest.</p>
+        </div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">🤖</span>
+        <div>
+          <h4>AI-augmented development is a skill, not a shortcut</h4>
+          <p>Using Claude AI throughout this build was not about generating code faster. It was about having a collaborator that challenged assumptions, caught edge cases, and pressure-tested decisions before they became technical debt. The skill is knowing when to accept, when to push back, and when to go a completely different direction.</p>
+        </div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">🔒</span>
+        <div>
+          <h4>Security built in is easier than security retrofitted</h4>
+          <p>RLS on all 12 tables and SECURITY DEFINER on all 44 RPCs was decided on day one. Database-level security means no Flutter bug can accidentally expose another society's data. This would have been extremely painful to add after the fact.</p>
+        </div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">📦</span>
+        <div>
+          <h4>Real requirements never arrive all at once</h4>
+          <p>Tenants, multi-society support, additional fees with partial payments, penalty config, multi-device push — none of these were in the original plan. The architecture absorbed every addition cleanly because it was built for extension, not for the minimum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end content -->
+
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <h2>Building a Flutter app?<br>Let's talk.</h2>
+  <p>
+    I am a Flutter developer with 4.5 years of experience building
+    production mobile apps with Supabase, BLoC, Clean Architecture,
+    and PostgreSQL. Based in Ahmedabad, India. Available for freelance projects.
+  </p>
+  <div class="cta-btns">
+    <a href="mailto:your@email.com" class="btn-primary">Get in Touch</a>
+    <a href="https://amin-ganja.vercel.app" class="btn-outline">View Portfolio</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <strong>My Society Ledger</strong> — Case Study by Amin Ganja<br>
+    Flutter Developer · Ahmedabad, India
+  </div>
+  <div class="footer-chips">
+    <span class="footer-chip">Flutter</span>
+    <span class="footer-chip">Supabase</span>
+    <span class="footer-chip">BLoC</span>
+    <span class="footer-chip">Clean Architecture</span>
+    <span class="footer-chip">PostgreSQL</span>
+    <span class="footer-chip">GoRouter</span>
+  </div>
+</footer>
+
+</body>
+</html>

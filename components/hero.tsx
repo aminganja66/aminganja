@@ -1,5 +1,7 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 export default function Hero() {
   const skills = [
     'Flutter',
@@ -13,24 +15,137 @@ export default function Hero() {
   const repeatedSkills = [...skills, ...skills]
 
   return (
-    <section className="w-full flex items-center justify-center px-4 pt-32 pb-16 md:pt-48 md:pb-24 bg-background relative overflow-hidden">
-      <div className="max-w-4xl w-full space-y-8 md:space-y-12">
+    <section className="relative isolate w-full h-svh min-h-[640px] flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+            backgroundSize: '56px 56px',
+            maskImage:
+              'radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%)',
+          }}
+        />
+
+        {/* Floating gradient orbs */}
+        <motion.div
+          className="absolute w-[28rem] h-[28rem] rounded-full bg-white/10 blur-[100px]"
+          style={{ top: '10%', left: '8%' }}
+          animate={{
+            x: [0, 40, -20, 0],
+            y: [0, 30, -20, 0],
+            scale: [1, 1.1, 0.95, 1],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute w-[24rem] h-[24rem] rounded-full bg-white/[0.08] blur-[100px]"
+          style={{ bottom: '5%', right: '10%' }}
+          animate={{
+            x: [0, -30, 20, 0],
+            y: [0, -25, 15, 0],
+            scale: [1, 0.9, 1.08, 1],
+          }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        />
+        <motion.div
+          className="absolute w-[18rem] h-[18rem] rounded-full bg-white/[0.06] blur-[90px]"
+          style={{ top: '45%', left: '50%', translateX: '-50%' }}
+          animate={{
+            x: [0, 25, -25, 0],
+            y: [0, -15, 20, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        />
+
+        {/* Subtle vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background pointer-events-none" />
+      </div>
+
+      <div className="max-w-4xl w-full flex flex-col items-center gap-5 md:gap-7 pt-16 pb-14 md:pt-14 md:pb-16">
+        {/* Eyebrow badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="glassmorphism inline-flex items-center gap-2 rounded-full px-4 py-1.5"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          <span className="text-xs md:text-sm text-gray-300 font-medium">
+            Available for new projects · Replies within 24h
+          </span>
+        </motion.div>
+
         {/* Main Headline */}
-        <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center text-balance leading-tight">
-            Flutter Developer in Ahmedabad —{' '}
-            <br className="hidden md:block" />
-            Helping Founders Ship Mobile MVPs Fast
-          </h1>
-        </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center text-balance leading-tight"
+        >
+          Mobile App Developer in Ahmedabad —{' '}
+          <br className="hidden md:block" />
+          <span className="bg-gradient-to-r from-white via-gray-200 to-gray-500 bg-clip-text text-transparent">
+            I Turn Startup Ideas into Live Apps
+          </span>
+        </motion.h1>
 
         {/* Subtext */}
-        <p className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto text-balance">
-          I help startup founders turn ideas into production-ready mobile apps using Flutter and Supabase as BaaS. AI-Augmented development with 4+ years of real experience — not vibe coding.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.22 }}
+          className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto text-balance"
+        >
+          You bring the idea — I design, build, and launch your iOS &amp; Android app, backend included. Most startups go live in 4–8 weeks, not months.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.34 }}
+          className="flex flex-col sm:flex-row items-center gap-4"
+        >
+          <a
+            href="#my-work"
+            className="group relative px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-full font-semibold text-base md:text-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-white/20"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              See My Work
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+          <a
+            href="#contact"
+            className="px-8 md:px-10 py-3 md:py-4 glassmorphism text-white rounded-full font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10"
+          >
+            Let&apos;s Talk
+          </a>
+        </motion.div>
 
         {/* Auto-scrolling Tech Stack */}
-        <div className="w-full pt-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="w-full pt-4 md:pt-6"
+        >
           <div className="relative">
             {/* Left mask */}
             <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
@@ -56,19 +171,29 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="flex justify-center pt-8">
-          <button className="px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-full font-semibold text-base md:text-lg hover:bg-accent transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            See My Work
-          </button>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -z-10"></div>
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-3 md:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+      >
+        <span className="text-[11px] uppercase tracking-widest text-gray-500">Scroll</span>
+        <motion.div
+          className="w-5 h-8 rounded-full border border-gray-600 flex items-start justify-center p-1.5"
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <motion.div
+            className="w-1 h-1.5 rounded-full bg-gray-400"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
