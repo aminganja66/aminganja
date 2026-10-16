@@ -11,14 +11,14 @@ const geistMono = Geist_Mono({
 })
 
 const siteUrl = 'https://amin-ganja.vercel.app'
-const siteTitle = 'Amin Ganja — Flutter Developer | Mobile Apps & Supabase BaaS'
+const siteTitle = 'Amin Ganja | Flutter Developer for Startup MVPs'
 const siteDescription =
   'I help founders ship mobile apps fast using Flutter and Supabase as BaaS. AI-Augmented development with 4+ years of experience. Based in Ahmedabad, India.'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: siteTitle,
   description: siteDescription,
-  generator: 'v0.app',
   authors: [{ name: 'Amin Ganja' }],
   keywords: [
     'Flutter developer',
@@ -31,14 +31,13 @@ export const metadata: Metadata = {
     'AI-augmented development',
   ],
   robots: { index: true, follow: true },
-  alternates: {
-    canonical: `${siteUrl}/`,
-  },
+  alternates: { canonical: '/' },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    url: `${siteUrl}/`,
-    images: [{ url: '/og-image.png' }],
+    url: '/',
+    siteName: 'Amin Ganja',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Amin Ganja, Flutter Developer' }],
     type: 'website',
   },
   twitter: {
@@ -71,19 +70,51 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Amin Ganja',
-  jobTitle: 'Flutter Developer',
-  url: `${siteUrl}/`,
-  email: 'amin.ganja@outlook.com',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Ahmedabad',
-    addressCountry: 'IN',
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/amin-ganja',
-    'https://github.com/aminganja66',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'Amin Ganja',
+      jobTitle: 'Flutter Developer',
+      url: `${siteUrl}/`,
+      image: `${siteUrl}/amin-profile.png`,
+      email: 'amin.ganja@outlook.com',
+      knowsAbout: ['Flutter', 'Supabase', 'Mobile app development', 'MVP development'],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Ahmedabad',
+        addressCountry: 'IN',
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/amin-ganja',
+        'https://github.com/aminganja66',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: 'Amin Ganja',
+      description: siteDescription,
+      publisher: { '@id': `${siteUrl}/#person` },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteUrl}/#service`,
+      name: 'Amin Ganja, Flutter + Supabase MVP Development',
+      url: `${siteUrl}/`,
+      image: `${siteUrl}/og-image.png`,
+      description: siteDescription,
+      provider: { '@id': `${siteUrl}/#person` },
+      areaServed: 'Worldwide',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Ahmedabad',
+        addressCountry: 'IN',
+      },
+      serviceType: 'Flutter mobile app development',
+    },
   ],
 }
 

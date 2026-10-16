@@ -168,6 +168,11 @@ export default function WhyMe() {
         >
           Let&apos;s Talk
         </a>
+        <div className="mt-5">
+          <a href="/why-me" className="text-gray-500 text-sm hover:text-white transition-colors duration-300">
+            Read the full page →
+          </a>
+        </div>
       </motion.div>
     </section>
   )

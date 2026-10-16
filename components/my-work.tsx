@@ -93,6 +93,7 @@ export default function MyWork() {
                   src={cs.thumbnail}
                   alt={cs.title}
                   fill
+                  sizes="(min-width: 1024px) 400px, 100vw"
                   className="object-contain group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                 />
                 <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-black/60 border border-white/15 text-white backdrop-blur-sm">
@@ -144,6 +145,16 @@ export default function MyWork() {
           </p>
         </motion.div>
       </div>
+
+      <a
+        href="/work"
+        className="group relative z-10 mt-10 inline-flex items-center gap-1.5 text-gray-500 text-sm font-medium hover:text-white transition-colors duration-300"
+      >
+        See the full portfolio
+        <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </section>
   )
 }

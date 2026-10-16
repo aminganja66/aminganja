@@ -5,9 +5,25 @@ import { ArrowLeft } from 'lucide-react'
 import ReadingProgress from '@/components/reading-progress'
 
 export const metadata: Metadata = {
-  title: 'My Society Ledger — Flutter + Supabase Case Study | Amin Ganja',
+  title: 'Society Ledger: Flutter + Supabase Case Study',
   description:
-    'How I built a full-stack society management mobile app with Flutter, Supabase, and Clean Architecture — solving real maintenance payment problems for Indian residential societies.',
+    'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
+  alternates: { canonical: '/work/society-ledger' },
+  openGraph: {
+    title: 'Society Ledger: Flutter + Supabase Case Study',
+    description:
+      'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
+    url: '/work/society-ledger',
+    images: [{ url: '/my_society_ledger.png' }],
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Society Ledger: Flutter + Supabase Case Study',
+    description:
+      'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
+    images: ['/my_society_ledger.png'],
+  },
 }
 
 const stats = [
@@ -148,9 +164,43 @@ function StepRow({ index, title, body, isLast }: { index: number; title: string;
   )
 }
 
+const siteUrl = 'https://amin-ganja.vercel.app'
+
+const caseStudyJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'My Society Ledger: Flutter + Supabase Case Study',
+      description:
+        'How I built a society management app with Flutter, Supabase and Clean Architecture for Indian residential societies.',
+      image: `${siteUrl}/my_society_ledger.png`,
+      author: { '@type': 'Person', name: 'Amin Ganja', url: `${siteUrl}/` },
+      mainEntityOfPage: `${siteUrl}/work/society-ledger`,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Work', item: `${siteUrl}/work` },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'My Society Ledger',
+          item: `${siteUrl}/work/society-ledger`,
+        },
+      ],
+    },
+  ],
+}
+
 export default function SocietyLedgerCaseStudy() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
       <ReadingProgress />
 
       {/* Back nav */}
@@ -365,6 +415,18 @@ export default function SocietyLedgerCaseStudy() {
                 Back to portfolio
               </Link>
             </div>
+          </section>
+
+          <section className="pb-16">
+            <p className="text-sm text-gray-400">
+              Related reading:{' '}
+              <Link
+                href="/blog/improve-user-engagement-health-tech-app"
+                className="text-white underline underline-offset-4"
+              >
+                How to improve user engagement in a health tech app
+              </Link>
+            </p>
           </section>
 
         </div>

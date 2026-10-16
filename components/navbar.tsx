@@ -25,11 +25,12 @@ export default function Navbar() {
   }, [])
 
   const navItems = [
-    { label: 'Who am I?', href: '#who-am-i' },
-    { label: 'My Work', href: '#my-work' },
-    { label: 'Offer', href: '#offer' },
-    { label: 'Why me?', href: '#why-me' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Who am I?', href: '/#who-am-i' },
+    { label: 'My Work', href: '/#my-work' },
+    { label: 'Offer', href: '/#offer' },
+    { label: 'Why me?', href: '/#why-me' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/#contact' },
   ]
 
   return (
@@ -47,7 +48,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between">
           <Link
-            href="#"
+            href="/"
             className="text-xl md:text-2xl font-bold text-white hover:text-accent transition-colors"
           >
             ✦
@@ -67,9 +68,12 @@ export default function Navbar() {
             </div>
           )}
 
-          <button className="hidden md:block px-6 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-accent transition-colors">
+          <Link
+            href="/#contact"
+            className="hidden md:block px-6 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-accent transition-colors"
+          >
             Let&apos;s Talk
-          </button>
+          </Link>
 
           {isSticky && (
             <button className="md:hidden text-white">

@@ -207,6 +207,11 @@ export default function Offer() {
         >
           Schedule a Free Consultation
         </a>
+        <div className="mt-5">
+          <a href="/pricing" className="text-gray-500 text-sm hover:text-white transition-colors duration-300">
+            See the full pricing page →
+          </a>
+        </div>
       </motion.div>
     </section>
   )
