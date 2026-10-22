@@ -132,7 +132,7 @@ export default function WhoAmI() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
         className="mt-4 text-base md:text-lg text-gray-400 text-center max-w-xl leading-relaxed text-balance"
       >
-        I help startup founders go from idea to a working app — without hiring a full team. Backend included, AI-augmented, built the right way.
+        I build secure iOS and Android apps for women&apos;s health startups, from the first screen to the app store, so you don&apos;t need a full agency team.
       </motion.p>
 
       {/* Floating photo + orbiting badges */}
@@ -144,16 +144,17 @@ export default function WhoAmI() {
           <div className="absolute -inset-10 rounded-full bg-white/10 blur-[80px] -z-10" />
           <Image
             src="/amin-nobg.png"
-            alt="Amin Ganja - Mobile App Developer for Startups"
+            alt="Amin Ganja, Flutter developer for women's health apps"
             width={751}
             height={1024}
+            sizes="(min-width: 1024px) 340px, (min-width: 768px) 300px, 240px"
             className="w-full h-auto drop-shadow-2xl select-none"
             priority
           />
         </motion.div>
 
         <FloatBadge mx={mouseX} my={mouseY} depthX={16} depthY={10} floatDelay={0} className="top-[4%] left-0 sm:left-[4%]">
-          <p className="text-sm font-semibold text-white whitespace-nowrap">4+ Years</p>
+          <p className="text-sm font-semibold text-white whitespace-nowrap">5 Years</p>
           <p className="text-xs text-gray-400 whitespace-nowrap">Building real products</p>
         </FloatBadge>
 
@@ -165,8 +166,8 @@ export default function WhoAmI() {
           floatDelay={0.6}
           className="hidden sm:block top-[10%] right-0 sm:right-[2%]"
         >
-          <p className="text-sm font-semibold text-white whitespace-nowrap">Flutter · Supabase</p>
-          <p className="text-xs text-gray-400 whitespace-nowrap">AI-augmented builds</p>
+          <p className="text-sm font-semibold text-white whitespace-nowrap">Flutter · FHIR</p>
+          <p className="text-xs text-gray-400 whitespace-nowrap">Women&apos;s health apps</p>
         </FloatBadge>
 
         <FloatBadge mx={mouseX} my={mouseY} depthX={-14} depthY={-10} floatDelay={1.1} className="bottom-[8%] left-0 sm:left-[2%]">
@@ -188,8 +189,8 @@ export default function WhoAmI() {
           floatDelay={1.6}
           className="hidden sm:block bottom-[4%] right-0 sm:right-[2%]"
         >
-          <p className="text-sm font-semibold text-white whitespace-nowrap">Backend Included</p>
-          <p className="text-xs text-gray-400 whitespace-nowrap">Auth · DB · Storage</p>
+          <p className="text-sm font-semibold text-white whitespace-nowrap">Privacy built in</p>
+          <p className="text-xs text-gray-400 whitespace-nowrap">Encrypted · BAA-ready</p>
         </FloatBadge>
       </div>
 
@@ -206,7 +207,7 @@ export default function WhoAmI() {
           href="#contact"
           className="px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold text-base md:text-lg hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
         >
-          Let&apos;s Build Together
+          Book a 20-min call
         </a>
         <a
           href="#my-work"

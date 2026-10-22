@@ -6,46 +6,46 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'About Amin Ganja | Flutter Developer, Ahmedabad',
+  title: "About Amin Ganja | Flutter Developer for Women's Health Apps",
   description:
-    'Meet Amin Ganja, a Flutter + Supabase developer in Ahmedabad with 4+ years of experience who helps startup founders go from idea to a working app.',
+    "Amin Ganja is a Flutter developer with 5 years of experience who builds private, HIPAA-aware apps for women's health startups. Based in Ahmedabad, India.",
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Amin Ganja | Flutter Developer, Ahmedabad',
+    title: "About Amin Ganja | Flutter Developer for Women's Health Apps",
     description:
-      'Meet Amin Ganja, a Flutter + Supabase developer in Ahmedabad with 4+ years of experience who helps startup founders go from idea to a working app.',
+      "Amin Ganja is a Flutter developer with 5 years of experience who builds private, HIPAA-aware apps for women's health startups. Based in Ahmedabad, India.",
     url: '/about',
     images: [{ url: '/og-image.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Amin Ganja | Flutter Developer, Ahmedabad',
+    title: "About Amin Ganja | Flutter Developer for Women's Health Apps",
     description:
-      'Meet Amin Ganja, a Flutter + Supabase developer in Ahmedabad with 4+ years of experience who helps startup founders go from idea to a working app.',
+      "Amin Ganja is a Flutter developer with 5 years of experience who builds private, HIPAA-aware apps for women's health startups. Based in Ahmedabad, India.",
     images: ['/og-image.png'],
   },
 }
 
 const facts = [
   { label: 'Location', value: 'Ahmedabad, India' },
-  { label: 'Experience', value: '4+ years' },
-  { label: 'Focus', value: 'Flutter + Supabase' },
-  { label: 'Availability', value: 'Open to remote work' },
+  { label: 'Experience', value: '5 years' },
+  { label: 'Focus', value: "Women's health apps" },
+  { label: 'Calls', value: '9 am–12 pm US Eastern' },
 ]
 
 const highlights = [
   {
-    title: '4+ years, shipping real products',
-    body: "Not tutorials, not side projects gathering dust — real apps that real people use, for real founders trying to get their idea off the ground.",
+    title: '5 years of shipping apps',
+    body: "I've shipped apps that real people use every day. That experience helps most when something unexpected breaks close to launch.",
   },
   {
-    title: 'Backend included',
-    body: "You don't need a separate hire for auth, database, and storage. That's part of the build, not an add-on.",
+    title: 'Privacy comes first',
+    body: 'In a women\'s health app, one slip with patient data can end a pilot. I keep health details out of logs, notifications and analytics, and I store data encrypted.',
   },
   {
-    title: 'AI-augmented, not AI-rushed',
-    body: "I use AI to move faster, but every app still gets solid structure and clean code underneath. Speed without cutting corners.",
+    title: 'Plain English, always',
+    body: "You don't need to know what FHIR or an API is. I explain each choice in terms of your patients and your launch date.",
   },
 ]
 
@@ -56,8 +56,8 @@ export default function AboutPage() {
 
       <PageHero
         eyebrow="About Me"
-        title="A bit more about me"
-        subtitle="The short version lives on the homepage. Here's the fuller picture — how I think about this work, and what to expect if we team up."
+        title="About Amin Ganja, Flutter developer for women's health apps"
+        subtitle="A little more about who you'd be working with."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[3/4] rounded-[calc(1.5rem-1.5px)] overflow-hidden bg-background">
                   <Image
                     src="/amin-nobg.png"
-                    alt="Amin Ganja - Flutter Developer"
+                    alt="Amin Ganja, Flutter developer for women's health apps"
                     fill
                     sizes="(min-width: 768px) 400px, 100vw"
                     className="object-cover object-top"
@@ -79,10 +79,10 @@ export default function AboutPage() {
               </div>
             </div>
             <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-              I help startup founders go from idea to a working app — without hiring a full
-              development team. Most of the founders I work with know exactly what they want to
-              build; they just need someone who can actually build it, end to end, without a
-              three-week kickoff process first.
+              I'm a Flutter developer based in Ahmedabad. For 5 years I've built mobile apps that
+              people use every day, and now I work mostly with women's health startups:
+              pregnancy, postpartum, fertility and menopause. I take one client project at a time,
+              so your project never waits behind another.
             </p>
           </section>
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
 
           {/* What I actually do */}
           <section>
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-8">What I actually do</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-8">What you can expect</h2>
             <div className="divide-y divide-white/10 border-t border-white/10">
               {highlights.map((h) => (
                 <div key={h.title} className="py-6">
@@ -113,20 +113,20 @@ export default function AboutPage() {
           <section className="rounded-2xl border border-white/10 bg-white/[0.02] p-7 md:p-9">
             <h2 className="text-lg md:text-xl font-bold text-white mb-3">Who I work best with</h2>
             <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-2xl">
-              This tends to work best if you already have a rough idea of what you're building and
-              want it live fast, not a long back-and-forth about process. If that's you, we'll
-              probably get along fine.
+              Founders and clinical teams building a women's health app with a pilot or launch
+              coming up, who want one person responsible for the build. If your timeline is
+              tight, we'll probably get along.
             </p>
           </section>
 
           {/* CTA */}
           <section className="text-center pt-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Got an idea worth building?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Have a pilot coming up?</h2>
             <Link
               href="/contact"
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-              Let&apos;s Talk
+              Book a 20-min call
             </Link>
           </section>
 

@@ -5,9 +5,9 @@ import SiteFooter from '@/components/site-footer'
 import BlogCard from '@/components/blog-card'
 import { getAllPosts, siteUrl } from '@/lib/blog'
 
-const title = 'Blog: Mobile App & Health Tech Insights | Amin Ganja'
+const title = "Blog: Women's Health App & Health Tech Insights | Amin Ganja"
 const description =
-  'Practical, research-backed articles on building mobile apps people keep using, from a Flutter and Supabase developer who ships MVPs for startup founders.'
+  "Plain-English articles on building health apps people keep using, and on protecting patient data, from a Flutter developer who builds women's health apps."
 
 export const metadata: Metadata = {
   title,
@@ -40,10 +40,11 @@ export default function BlogIndexPage() {
       <main>
         <PageHero
           eyebrow="Blog"
-          title="Ideas worth shipping"
-          subtitle="Practical notes on building mobile apps people keep using, backed by real research."
+          title="Notes on building health apps"
+          subtitle="Plain-English articles on apps people keep using, and on keeping patient data safe."
         />
         <section className="px-4 md:px-8 pb-24">
+          <h2 className="sr-only">Articles</h2>
           <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2">
             {posts.map((p) => (
               <BlogCard key={p.slug} post={p} />

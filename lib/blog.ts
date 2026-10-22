@@ -1,4 +1,6 @@
-export const siteUrl = 'https://amin-ganja.vercel.app'
+import { siteUrl } from '@/lib/site'
+
+export { siteUrl }
 
 export type Block =
   | { type: 'p'; text: string }

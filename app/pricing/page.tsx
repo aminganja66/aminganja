@@ -5,85 +5,82 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'Flutter MVP Development Pricing | Amin Ganja',
+  title: "Women's Health App Development Pricing | Amin Ganja",
   description:
-    'Simple, transparent packages for Flutter + Supabase MVPs, from a first launch to ongoing product support. See what is included and get a quote.',
+    "Fixed-price packages for women's health apps: a pilot-ready first version, clinical data and payments, and ongoing support. Book a 20-minute call for a quote.",
   alternates: { canonical: '/pricing' },
   openGraph: {
-    title: 'Flutter MVP Development Pricing | Amin Ganja',
+    title: "Women's Health App Development Pricing | Amin Ganja",
     description:
-      'Simple, transparent packages for Flutter + Supabase MVPs, from a first launch to ongoing product support. See what is included and get a quote.',
+      "Fixed-price packages for women's health apps: a pilot-ready first version, clinical data and payments, and ongoing support. Book a 20-minute call for a quote.",
     url: '/pricing',
     images: [{ url: '/og-image.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Flutter MVP Development Pricing | Amin Ganja',
+    title: "Women's Health App Development Pricing | Amin Ganja",
     description:
-      'Simple, transparent packages for Flutter + Supabase MVPs, from a first launch to ongoing product support. See what is included and get a quote.',
+      "Fixed-price packages for women's health apps: a pilot-ready first version, clinical data and payments, and ongoing support. Book a 20-minute call for a quote.",
     images: ['/og-image.png'],
   },
 }
 
 const packages = [
   {
-    name: 'MVP Launch',
-    tagline: 'Full-stack Flutter + Supabase mobile app — from zero to App Store.',
-    badge: 'Most Popular',
+    name: 'Pilot App',
+    tagline: 'A secure iOS and Android app, ready for your first patients.',
+    badge: 'Most popular',
     features: [
-      'User Authentication',
-      'Core Product Features',
-      'Admin Dashboard',
-      'Database & Backend',
-      'Mobile App or Web App',
-      'Deployment',
-      'Analytics Setup',
+      'Sign-up and secure login',
+      'Your core patient features',
+      'Encrypted storage of patient data',
+      'Privacy checks before release',
+      'App Store and Google Play release',
+      'Code, docs and a walkthrough',
     ],
   },
   {
-    name: 'Growth',
-    tagline: 'Scale your MVP with AI features, payments, and a more advanced backend.',
-    badge: 'Accelerate',
+    name: 'Connected App',
+    tagline: 'Everything in Pilot App, plus hospital records and payments.',
+    badge: 'Clinical data',
     features: [
-      'Everything in MVP Launch',
-      'Payment Integration',
-      'Notifications',
-      'Advanced User Roles',
-      'AI Features',
-      'Performance Optimization',
+      'Everything in Pilot App',
+      'Hospital record access through FHIR',
+      'Patient and care-team roles',
+      'Stripe or Razorpay payments',
+      'Push notifications without patient details',
     ],
   },
   {
-    name: 'Partnership',
-    tagline: 'Ongoing development and support as your startup grows.',
+    name: 'Ongoing Support',
+    tagline: 'Keep improving the app after launch.',
     badge: 'Support',
     features: [
-      'Feature Development',
-      'Bug Fixes',
-      'Product Improvements',
-      'Technical Support',
-      'Scaling Assistance',
+      'New features',
+      'Bug fixes',
+      'Security updates',
+      'Help with your next release',
     ],
   },
 ]
 
 const faqs = [
   {
-    q: 'What\'s included in every package?',
-    a: 'Full technical support and a quality guarantee, no matter which one you pick.',
+    q: 'Is the price really fixed?',
+    a: 'Yes. After our call you get a written scope and one price, so there are no surprise bills.',
   },
   {
-    q: 'How long does it usually take?',
-    a: 'Most MVPs go live in 4–8 weeks, depending on scope.',
+    q: 'How long does a project take?',
+    a: 'Most pilots go live in weeks, not months. Your timeline comes with your scope.',
   },
   {
-    q: 'What if my project doesn\'t fit neatly into one of these?',
-    a: 'Most don\'t, honestly. Tell me what you\'re building and we\'ll figure out the right scope together.',
+    q: "What if my project doesn't fit one of these?",
+    a: "Many don't. Tell me what you're building and we'll agree the right scope together.",
   },
   {
-    q: 'Do I need to know Flutter or Supabase to work with you?',
-    a: 'No. That\'s most of who I work with — you just need to know what you want the app to do.',
+    q: 'Do I need to understand the technical side?',
+    a: 'No. I explain each choice in terms of your patients and your launch date.',
   },
 ]
 
@@ -108,12 +105,13 @@ export default function PricingPage() {
 
       <PageHero
         eyebrow="Pricing"
-        title="Simple, transparent packages"
-        subtitle="Pick a lane. Every package includes full technical support and a quality guarantee."
+        title="Fixed-price packages"
+        subtitle="After our call you get a written scope and one price within 48 hours."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
         <div className="max-w-6xl mx-auto">
+        <h2 className="sr-only">Packages</h2>
 
           {/* Packages */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -121,7 +119,7 @@ export default function PricingPage() {
               <div
                 key={pkg.name}
                 className={`rounded-2xl border p-7 md:p-8 flex flex-col ${
-                  pkg.badge === 'Most Popular'
+                  pkg.badge === 'Most popular'
                     ? 'border-white/30 bg-gradient-to-br from-white/[0.06] to-white/0'
                     : 'border-white/10 bg-white/[0.02]'
                 }`}
@@ -155,7 +153,7 @@ export default function PricingPage() {
                       : 'border border-white/20 text-white hover:bg-white/10'
                   }`}
                 >
-                  Get Started
+                  Book a 20-min call
                 </Link>
               </div>
             ))}
@@ -163,7 +161,7 @@ export default function PricingPage() {
 
           {/* FAQ */}
           <div className="max-w-2xl mx-auto mt-24">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-8 text-center">Questions founders usually ask</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-8 text-center">Common questions</h2>
             <div className="divide-y divide-white/10 border-t border-white/10">
               {faqs.map((f) => (
                 <div key={f.q} className="py-6">
@@ -181,7 +179,7 @@ export default function PricingPage() {
               href="/contact"
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 hover:border-white/40 transition-all duration-300"
             >
-              Let&apos;s Talk It Through
+              Book a 20-min call
             </Link>
           </div>
         </div>

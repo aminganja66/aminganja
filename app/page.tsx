@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Navbar from '@/components/navbar'
 import Hero from '@/components/hero'
+import PainPoints from '@/components/pain-points'
+import Faq from '@/components/faq'
 import WhoAmI from '@/components/who-am-i'
 import MyWork from '@/components/my-work'
 import Offer from '@/components/offer'
@@ -17,15 +19,17 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
+        <PainPoints />
         <WhoAmI />
         <MyWork />
         <Offer />
         <HowIWork />
         <WhyMe />
         <FeaturedBlog />
+        <Faq />
         <Contact />
         <div className="sr-only">
-          Amin Ganja is a Flutter developer based in Ahmedabad, Gujarat, India. Specializing in Flutter and Supabase BaaS mobile app development for startup founders. Services include MVP development, mobile app development, SaaS platform development, admin dashboards, AI feature integration, and Supabase backend architecture. AI-Augmented development approach with 4+ years of Flutter experience. Available for remote Flutter developer positions and MVP projects.
+          Amin Ganja is a Flutter developer for women's health and femtech startups. He builds HIPAA-aware iOS and Android apps for pregnancy, postpartum, fertility and menopause care, connects them to hospital records through FHIR, and works for a fixed price. Available for calls in US Eastern mornings.
         </div>
       </main>
     </div>

@@ -7,23 +7,23 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'Flutter + Supabase Case Studies | Amin Ganja',
+  title: "App Case Studies | Amin Ganja, Flutter Developer",
   description:
-    'Real Flutter + Supabase apps built for real startup founders. Read the case studies to see what got shipped, the problems solved, and how it was built.',
+    "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
   alternates: { canonical: '/work' },
   openGraph: {
-    title: 'Flutter + Supabase Case Studies | Amin Ganja',
+    title: "App Case Studies | Amin Ganja, Flutter Developer",
     description:
-      'Real Flutter + Supabase apps built for real startup founders. Read the case studies to see what got shipped, the problems solved, and how it was built.',
+      "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
     url: '/work',
     images: [{ url: '/my_society_ledger.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Flutter + Supabase Case Studies | Amin Ganja',
+    title: "App Case Studies | Amin Ganja, Flutter Developer",
     description:
-      'Real Flutter + Supabase apps built for real startup founders. Read the case studies to see what got shipped, the problems solved, and how it was built.',
+      "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
     images: ['/my_society_ledger.png'],
   },
 }
@@ -33,7 +33,7 @@ const caseStudies = [
     slug: 'society-ledger',
     thumbnail: '/my_society_ledger.png',
     tag: 'MVP in 30 Days',
-    title: 'SocietyLedger — Smart Society Management App',
+    title: 'SocietyLedger: a society management app',
     description:
       'A cross-platform Flutter app that digitizes maintenance dues, payment tracking, and expense reporting for residential societies.',
     tech: ['Flutter', 'Supabase', 'Cloudinary', 'Twilio'],
@@ -47,12 +47,13 @@ export default function WorkPage() {
 
       <PageHero
         eyebrow="My Work"
-        title="Real projects, real founders"
-        subtitle="Not portfolio mockups. Every project here shipped to real users, usually inside a few weeks."
+        title="Apps I've shipped"
+        subtitle="Real projects used by real people. More case studies are on the way."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <h2 className="sr-only">Case studies</h2>
           {caseStudies.map((cs) => (
             <Link
               key={cs.slug}
@@ -99,7 +100,7 @@ export default function WorkPage() {
               <Plus className="w-5 h-5" />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed max-w-[16rem]">
-              More case studies are shipping soon — check back for the next build.
+              More case studies are on the way.
             </p>
           </div>
         </div>
@@ -113,7 +114,7 @@ export default function WorkPage() {
             href="/contact"
             className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
-            Let&apos;s Talk
+            Book a 20-min call
           </Link>
         </div>
       </main>

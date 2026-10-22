@@ -5,51 +5,43 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'Why Hire a Solo Flutter Developer | Amin Ganja',
+  title: "Why Choose Me for Your Women's Health App | Amin Ganja",
   description:
-    'What makes working with a solo Flutter + Supabase developer different from an agency, and who this is a good fit for. Clear, fast and founder-focused.',
+    "Why women's health startups hire me: I focus on pregnancy, postpartum and fertility apps, handle app and health data, build in privacy, and quote a fixed price.",
   alternates: { canonical: '/why-me' },
   openGraph: {
-    title: 'Why Hire a Solo Flutter Developer | Amin Ganja',
+    title: "Why Choose Me for Your Women's Health App | Amin Ganja",
     description:
-      'What makes working with a solo Flutter + Supabase developer different from an agency, and who this is a good fit for. Clear, fast and founder-focused.',
+      "Why women's health startups hire me: I focus on pregnancy, postpartum and fertility apps, handle app and health data, build in privacy, and quote a fixed price.",
     url: '/why-me',
     images: [{ url: '/og-image.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Why Hire a Solo Flutter Developer | Amin Ganja',
+    title: "Why Choose Me for Your Women's Health App | Amin Ganja",
     description:
-      'What makes working with a solo Flutter + Supabase developer different from an agency, and who this is a good fit for. Clear, fast and founder-focused.',
+      "Why women's health startups hire me: I focus on pregnancy, postpartum and fertility apps, handle app and health data, build in privacy, and quote a fixed price.",
     images: ['/og-image.png'],
   },
 }
 
 const reasons = [
   {
-    title: 'Founder-Focused Development',
-    body: 'Startups need speed, validation, and flexibility. My goal is to help you launch and learn from real users quickly.',
+    title: "Focused on women's health apps",
+    body: 'I already understand the care flows for prenatal, postpartum and fertility patients, so we skip the long briefing and get to the screens.',
   },
   {
-    title: 'End-to-End MVP Delivery',
-    body: 'From planning and architecture to development and deployment, I handle the complete process so you can focus on growing.',
+    title: 'App and health data in one person',
+    body: 'The same person builds your screens and connects them to clinical systems. Nothing gets lost between an app developer and an integration specialist.',
   },
   {
-    title: 'Fast Iteration',
-    body: 'Startups evolve quickly. I build with flexible architecture that lets you add, modify, or improve features without rebuilding.',
+    title: 'Privacy built in from day one',
+    body: 'No patient data in logs, notifications or analytics, and everything is stored encrypted. I also help you choose hosting and backend tools that will sign a BAA, the agreement HIPAA asks for from any vendor that handles patient data.',
   },
   {
-    title: 'Modern Technology Stack',
-    body: 'Scalable, maintainable, cost-effective — using tools built for real production usage, not just what\'s trendy.',
-  },
-  {
-    title: 'Clear Communication',
-    body: 'You\'ll always know what\'s being built, what stage it\'s in, and what comes next. No technical jargon.',
-  },
-  {
-    title: 'Long-Term Partnership',
-    body: 'I don\'t disappear after launch. I keep supporting, improving, and scaling your product as you grow.',
+    title: 'Fixed price',
+    body: 'You agree the scope and the price up front, so there are no surprise bills.',
   },
 ]
 
@@ -60,12 +52,13 @@ export default function WhyMePage() {
 
       <PageHero
         eyebrow="Why Work With Me"
-        title="What makes me different"
-        subtitle="I'm not just a developer — I'm a partner invested in your startup's success."
+        title="Why women's health teams work with me"
+        subtitle="Four reasons, in plain terms."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
         <div className="max-w-4xl mx-auto">
+        <h2 className="sr-only">Four reasons</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
             {reasons.map((r) => (
@@ -78,25 +71,25 @@ export default function WhyMePage() {
 
           {/* Who this is for */}
           <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-7 md:p-9">
-            <h2 className="text-lg md:text-xl font-bold text-white mb-3">Who this is actually for</h2>
+            <h2 className="text-lg md:text-xl font-bold text-white mb-3">Who this is for</h2>
             <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-2xl">
-              This tends to work best for founders who want to move fast, are comfortable making
-              decisions together as we go, and want one person who understands both the code and
-              the product — not a ticket queue.
+              You'll get the most from this if you have a pilot or launch in the next few months
+              and want one person accountable for the app. I'm free for calls 7:30 to 10:30 pm
+              IST, which is 9 am to 12 pm US Eastern.
             </p>
           </div>
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to build something great?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Have a pilot coming up?</h2>
             <p className="text-gray-400 mb-8 max-w-xl mx-auto text-sm md:text-base">
-              Let&apos;s discuss your vision and see if we&apos;re a fit for your next MVP.
+              Tell me about your users and your timeline. I&apos;ll tell you honestly if I can help.
             </p>
             <Link
               href="/contact"
               className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-              Let&apos;s Talk
+              Book a 20-min call
             </Link>
           </div>
         </div>

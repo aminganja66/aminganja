@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import ContactForm from '@/components/contact-form'
 import { motion } from 'framer-motion'
+import { BOOKING_URL } from '@/lib/site'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -27,23 +28,6 @@ const links = [
 ]
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' })
-      setSubmitted(false)
-    }, 3000)
-  }
-
   return (
     <section
       id="contact"
@@ -84,7 +68,7 @@ export default function Contact() {
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
               className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight text-balance"
             >
-              Let&apos;s build something people actually use.
+              Have a pilot or launch in the next 3 months?
             </motion.h2>
 
             <motion.p
@@ -95,8 +79,15 @@ export default function Contact() {
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
               className="mt-5 text-base md:text-lg text-gray-400 leading-relaxed max-w-lg text-balance"
             >
-              Have an idea? Tell me what you&apos;re building and I&apos;ll get back to you within a day.
+              Let&apos;s make sure your app is ready, and safe. Book a 20-minute call, or send a note and I&apos;ll reply within a day.
             </motion.p>
+
+            <a
+              href={BOOKING_URL}
+              className="mt-8 inline-block px-8 py-3 md:py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300"
+            >
+              Book a 20-min call
+            </a>
 
             <motion.div
               initial="hidden"
@@ -141,65 +132,14 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
             className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8"
           >
-            {submitted ? (
-              <div className="text-center py-16">
-                <div className="text-4xl mb-4">✓</div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-400">Thanks for reaching out. I&apos;ll get back to you soon.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Your Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Tell me about your project</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-colors resize-none"
-                    placeholder="Share your idea, timeline, and budget..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+            <ContactForm />
           </motion.div>
         </div>
 
         {/* Footer */}
         <div className="text-center mt-16 md:mt-20 pt-8 border-t border-white/10">
           <p className="text-gray-500 text-sm">
-            © 2025 Amin Ganja · Flutter Developer, Ahmedabad, India · Flutter + Supabase MVP Development for Startups
+            © 2025 Amin Ganja · Flutter developer for women&apos;s health apps · Ahmedabad, India
           </p>
         </div>
       </div>

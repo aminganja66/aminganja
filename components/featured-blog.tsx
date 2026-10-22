@@ -48,7 +48,7 @@ export default function FeaturedBlog() {
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
           className="mt-5 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-balance"
         >
-          Notes on building apps people actually keep using
+          Notes on building health apps
         </motion.h2>
 
         <motion.div

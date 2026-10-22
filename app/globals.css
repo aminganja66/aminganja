@@ -4,6 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Lifted from #6a7282 (4.1:1) so grey text passes WCAG AA (5.7:1) on the dark background */
+@theme {
+  --color-gray-500: #818a9b;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-geist-sans), 'Geist Fallback';

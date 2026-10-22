@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowLeft } from 'lucide-react'
 import ReadingProgress from '@/components/reading-progress'
+import { siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Society Ledger: Flutter + Supabase Case Study',
@@ -42,7 +43,7 @@ const problems = [
   {
     emoji: '⚔️',
     title: 'Monthly disputes between neighbours',
-    body: '"Mera toh paid hai!" — every admin has heard that a hundred times, and usually has no real way to check.',
+    body: '"Mera toh paid hai!" Every admin has heard that a hundred times, and usually has no real way to check.',
   },
   {
     emoji: '📊',
@@ -61,15 +62,15 @@ const solutionSteps = [
   },
   {
     title: 'Members pay and upload proof',
-    body: 'People still pay however they normally do — UPI, bank transfer, whatever. They just snap the screenshot and upload it. Takes about 30 seconds.',
+    body: 'People still pay however they normally do (UPI, bank transfer, whatever). They just snap the screenshot and upload it. Takes about 30 seconds.',
   },
   {
     title: 'Admin approves with one tap',
-    body: "One tap to approve or reject, and the member gets notified right away. That record's permanent — no more digging through chat history to prove you paid.",
+    body: "One tap to approve or reject, and the member gets notified right away. That record is permanent, so nobody has to dig through chat history to prove they paid.",
   },
   {
     title: 'Everyone sees the same truth',
-    body: "Admin and members are looking at the exact same numbers — dues, payments, expenses. Once everyone's on the same page, there's nothing left to dispute.",
+    body: "Admin and members see the exact same numbers: dues, payments, expenses. Once everyone's on the same page, there's nothing left to dispute.",
   },
 ]
 
@@ -102,12 +103,12 @@ const learnings = [
   {
     emoji: '🤖',
     title: 'AI-augmented development is a skill, not a shortcut',
-    body: "Claude wasn't on autopilot — it kept questioning my assumptions, which was more useful. Knowing when to push back on its suggestions was the real skill.",
+    body: "Claude wasn't on autopilot. It kept questioning my assumptions, which was more useful. Knowing when to push back on its suggestions was the real skill.",
   },
   {
     emoji: '📦',
     title: 'Real requirements never arrive all at once',
-    body: "Tenants, multi-society support, penalty settings — none of that was in my original plan. New stuff kept showing up, and it worked out because I'd built the architecture to grow, not just to work.",
+    body: "Tenants, multi-society support and penalty settings were not in my original plan. New stuff kept showing up, and it worked out because I'd built the architecture to grow, not just to work.",
   },
 ]
 
@@ -153,7 +154,7 @@ function Vignette({ emoji, title, body }: { emoji: string; title: string; body: 
 function StepRow({ index, title, body, isLast }: { index: number; title: string; body: string; isLast: boolean }) {
   return (
     <div className={`flex gap-5 md:gap-6 py-7 ${isLast ? '' : 'border-b border-white/10'}`}>
-      <span className="text-3xl md:text-4xl font-black text-white/10 leading-none shrink-0 w-12 md:w-14">
+      <span aria-hidden="true" className="text-3xl md:text-4xl font-black text-white/40 leading-none shrink-0 w-12 md:w-14">
         {String(index + 1).padStart(2, '0')}
       </span>
       <div>
@@ -164,7 +165,6 @@ function StepRow({ index, title, body, isLast }: { index: number; title: string;
   )
 }
 
-const siteUrl = 'https://amin-ganja.vercel.app'
 
 const caseStudyJsonLd = {
   '@context': 'https://schema.org',
@@ -236,15 +236,15 @@ export default function SocietyLedgerCaseStudy() {
             </h1>
 
             <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl">
-              It&apos;s a full mobile app for Indian residential societies — dues, payments, expenses,
-              all of it — and I built the whole thing myself in about a month.
+              It&apos;s a full mobile app for Indian residential societies, covering dues, payments and
+              expenses, and I built the whole thing myself in about a month.
             </p>
 
             {/* Meta row */}
             <div className="flex flex-wrap gap-x-8 gap-y-4 pt-6 border-t border-white/10">
               {[
                 { label: 'Timeline', value: '30-35 Days' },
-                { label: 'Role', value: 'Solo — Full Stack' },
+                { label: 'Role', value: 'Solo, full stack' },
                 { label: 'Platform', value: 'Android + iOS' },
                 { label: 'Stack', value: 'Flutter · Supabase · PostgreSQL' },
               ].map(({ label, value }) => (
@@ -285,7 +285,7 @@ export default function SocietyLedgerCaseStudy() {
             <ChapterHeader
               chapter="01"
               title="The Same Argument, Every Month"
-              subtitle="Most societies are still run on WhatsApp groups and Excel sheets. Nobody's a bad person here — they just don't have a system, so the same fight happens every month."
+              subtitle="Most societies are still run on WhatsApp groups and Excel sheets. Nobody's a bad person here. They just don't have a system, so the same fight happens every month."
             />
 
             <div className="space-y-8 mb-12">
@@ -307,7 +307,7 @@ export default function SocietyLedgerCaseStudy() {
             <ChapterHeader
               chapter="02"
               title="How the App Actually Works"
-              subtitle="Here's the whole flow, start to finish — from the admin setting things up to a member proving they paid."
+              subtitle="Here's the whole flow, start to finish, from the admin setting things up to a member proving they paid."
             />
 
             <div>
@@ -322,12 +322,12 @@ export default function SocietyLedgerCaseStudy() {
             <ChapterHeader
               chapter="03"
               title="How It Was Built"
-              subtitle="The short version — I'll spare you the deep technical dive."
+              subtitle="The short version. I'll spare you the deep technical dive."
             />
 
             <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-2xl mb-8">
-              I broke it into six phases — figured out the real problem first, designed the
-              database, wrote the backend logic, then built the actual app in Flutter. Every step
+              I broke it into six phases: figure out the real problem, design the database, write the
+              backend logic, then build the actual app in Flutter. Every step
               got planned and reviewed before I touched any code.
             </p>
 
@@ -342,12 +342,12 @@ export default function SocietyLedgerCaseStudy() {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-accent mb-1">SHIPPED</p>
-                <p className="text-xs text-gray-400 leading-relaxed">Turned out yes — one column, way simpler.</p>
+                <p className="text-xs text-gray-400 leading-relaxed">Turned out yes. One column, way simpler.</p>
               </div>
             </div>
             <p className="text-xs md:text-sm text-gray-500 leading-relaxed max-w-2xl mb-10">
-              That&apos;s basically how I used AI on this whole project — it suggests, I push back
-              when something feels off, and I decide. I understood every RPC and every schema
+              That&apos;s how I used AI on this whole project. It suggests, I push back when something
+              feels off, and I decide. I understood every RPC and every schema
               choice before it went live.
             </p>
 
@@ -366,7 +366,7 @@ export default function SocietyLedgerCaseStudy() {
             <ChapterHeader
               chapter="04"
               title="What I Actually Learned in 30 Days"
-              subtitle="I built this solo in about a month. Here's what actually mattered — not the feature list."
+              subtitle="I built this solo in about a month. Here's what actually mattered, and it wasn't the feature list."
             />
 
             {/* Outcome stats */}
@@ -391,14 +391,14 @@ export default function SocietyLedgerCaseStudy() {
           {/* ── CTA ── */}
           <section className="py-16 border-t border-white/10 text-center space-y-5">
             <h2 className="text-2xl md:text-4xl font-bold text-white">
-              Building a Flutter app?
+              Building a women&apos;s health app?
               <br />
               <span className="text-accent">Let&apos;s talk.</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-              I&apos;m a Flutter developer based in Ahmedabad, India, with 4.5+ years building
-              production apps — Supabase, Clean Architecture, the works. Open for freelance
-              projects right now.
+              I&apos;m a Flutter developer in Ahmedabad, India, with 5 years of experience. I now
+              focus on women&apos;s health apps that keep patient data private. I&apos;m open to new
+              projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2 pb-8">
               <Link
@@ -436,8 +436,8 @@ export default function SocietyLedgerCaseStudy() {
       <footer className="border-t border-white/10 px-4 py-6">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <p className="text-xs text-gray-500">
-            <span className="text-white font-semibold">My Society Ledger</span> — Case Study by
-            Amin Ganja · Flutter Developer, Ahmedabad, India
+            <span className="text-white font-semibold">My Society Ledger</span> · Case study by
+            Amin Ganja · Flutter developer for women&apos;s health apps, Ahmedabad, India
           </p>
           <div className="flex flex-wrap gap-2">
             {['Flutter', 'Supabase', 'BLoC', 'Clean Architecture', 'PostgreSQL', 'GoRouter'].map(

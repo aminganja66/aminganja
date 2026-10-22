@@ -15,7 +15,7 @@ const caseStudies = [
     slug: 'society-ledger',
     thumbnail: '/my_society_ledger.png',
     tag: 'MVP in 30 Days',
-    title: 'SocietyLedger — Smart Society Management App',
+    title: 'SocietyLedger: a society management app',
     description:
       'A cross-platform Flutter app that digitizes maintenance dues, payment tracking, and expense reporting for residential societies.',
     tech: ['Flutter', 'Supabase', 'Cloudinary', 'Twilio'],
@@ -58,7 +58,7 @@ export default function MyWork() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
         className="mt-5 text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center text-balance"
       >
-        Recent Case Studies
+        Apps I&apos;ve shipped
       </motion.h2>
 
       <motion.p
@@ -69,7 +69,7 @@ export default function MyWork() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
         className="mt-4 text-base md:text-lg text-gray-400 text-center max-w-xl leading-relaxed text-balance"
       >
-        Real products shipped for real founders — not portfolio mockups.
+        Real apps used by real people. More case studies are on the way.
       </motion.p>
 
       {/* Project grid */}
@@ -128,7 +128,7 @@ export default function MyWork() {
           </motion.div>
         ))}
 
-        {/* Coming soon placeholder — keeps the grid honest about what's next */}
+        {/* Placeholder for the next case study */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -141,7 +141,7 @@ export default function MyWork() {
             <Plus className="w-5 h-5" />
           </div>
           <p className="text-sm text-gray-500 leading-relaxed max-w-[16rem]">
-            More case studies are shipping soon — check back for the next build.
+            More case studies are on the way.
           </p>
         </motion.div>
       </div>

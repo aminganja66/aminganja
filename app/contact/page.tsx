@@ -5,23 +5,23 @@ import SiteFooter from '@/components/site-footer'
 import ContactForm from '@/components/contact-form'
 
 export const metadata: Metadata = {
-  title: 'Contact Amin Ganja | Flutter Developer for Hire',
+  title: "Contact Amin Ganja | Women's Health App Developer",
   description:
-    'Have an app idea? Get in touch with Amin Ganja, a Flutter + Supabase developer in Ahmedabad, India. Share your idea and get a reply within a day.',
+    "Planning a women's health app? Send a message to Amin Ganja, a Flutter developer in Ahmedabad, India, and get a reply within a day.",
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact Amin Ganja | Flutter Developer for Hire',
+    title: "Contact Amin Ganja | Women's Health App Developer",
     description:
-      'Have an app idea? Get in touch with Amin Ganja, a Flutter + Supabase developer in Ahmedabad, India. Share your idea and get a reply within a day.',
+      "Planning a women's health app? Send a message to Amin Ganja, a Flutter developer in Ahmedabad, India, and get a reply within a day.",
     url: '/contact',
     images: [{ url: '/og-image.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Amin Ganja | Flutter Developer for Hire',
+    title: "Contact Amin Ganja | Women's Health App Developer",
     description:
-      'Have an app idea? Get in touch with Amin Ganja, a Flutter + Supabase developer in Ahmedabad, India. Share your idea and get a reply within a day.',
+      "Planning a women's health app? Send a message to Amin Ganja, a Flutter developer in Ahmedabad, India, and get a reply within a day.",
     images: ['/og-image.png'],
   },
 }
@@ -34,10 +34,13 @@ const links = [
 
 const faqs = [
   { q: 'How fast do you reply?', a: 'Usually within 24 hours.' },
-  { q: 'Do you work with clients outside India?', a: 'Yes — most of my work is remote anyway.' },
+  {
+    q: 'Do you work with clients outside India?',
+    a: "Yes. Most of my work is remote. I'm free for calls 7:30 to 10:30 pm IST, which is 9 am to 12 pm US Eastern.",
+  },
   {
     q: 'What should I include in my first message?',
-    a: 'A quick idea of what you\'re building and roughly when you\'d want to start. That\'s enough for a first reply.',
+    a: "Who the app is for and when your pilot or launch starts. That's enough for a first reply.",
   },
 ]
 
@@ -48,12 +51,13 @@ export default function ContactPage() {
 
       <PageHero
         eyebrow="Get in Touch"
-        title="Let's build something people actually use"
-        subtitle="Have an idea? Tell me what you're building and I'll get back to you within a day."
+        title="Let's talk about your app"
+        subtitle="Send a note and I'll reply within a day."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
+        <h2 className="sr-only">Contact details</h2>
 
           {/* Left: links + FAQ */}
           <div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { BOOKING_URL } from '@/lib/site'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -10,34 +11,24 @@ const fadeUp = {
 
 const reasons = [
   {
-    title: 'Founder-Focused Development',
+    title: "Focused on women's health apps",
     description:
-      'I understand startups need speed, validation, and flexibility. My goal is to help you launch and learn from real users quickly.',
+      'I already understand prenatal, postpartum and fertility care flows, so you spend less time explaining your world to me.',
   },
   {
-    title: 'End-to-End MVP Delivery',
+    title: 'App and health data in one person',
     description:
-      'From planning and architecture to development and deployment, I handle the complete process so you focus on growing.',
+      'The same person builds your screens and connects them to clinical systems. Nothing gets lost between an app developer and an integration specialist.',
   },
   {
-    title: 'Fast Iteration',
+    title: 'Privacy built in from day one',
     description:
-      'Startups evolve quickly. I build with flexible architecture that lets you add, modify, or improve features without rebuilding.',
+      'No patient data in logs, notifications or analytics. Encrypted storage. Backends that will sign a BAA.',
   },
   {
-    title: 'Modern Technology Stack',
+    title: 'Fixed price',
     description:
-      'Scalable, maintainable, and cost-effective solutions using modern tools built for real-world production usage.',
-  },
-  {
-    title: 'Clear Communication',
-    description:
-      "You'll always know what's being built, what stage it's in, and what comes next. No technical jargon.",
-  },
-  {
-    title: 'Long-Term Partnership',
-    description:
-      "I don't disappear after launch. I continue supporting, improving, and scaling your product as you grow.",
+      "You agree the scope and the price up front, so there are no surprise bills. I'm also free for calls 7:30 to 10:30 pm IST, which is 9 am to 12 pm US Eastern.",
   },
 ]
 
@@ -80,7 +71,7 @@ export default function WhyMe() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
         className="mt-5 text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center text-balance"
       >
-        What Makes Me Different
+        Why women's health teams work with me
       </motion.h2>
 
       <motion.p
@@ -91,7 +82,7 @@ export default function WhyMe() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
         className="mt-4 text-base md:text-lg text-gray-400 text-center max-w-xl leading-relaxed text-balance"
       >
-        I&apos;m not just a developer — I&apos;m a partner invested in your startup&apos;s success.
+        Four reasons founders and clinical teams pick me.
       </motion.p>
 
       {/* Accordion list */}
@@ -158,15 +149,15 @@ export default function WhyMe() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="mt-14 md:mt-16 text-center"
       >
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Ready to build something great?</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Have a pilot coming up?</h3>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm md:text-base">
-          Let&apos;s discuss your vision and see if we&apos;re a fit for your next MVP.
+          Tell me about your users and your timeline. I&apos;ll tell you honestly if I can help.
         </p>
         <a
-          href="#contact"
+          href={BOOKING_URL}
           className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
         >
-          Let&apos;s Talk
+          Book a 20-min call
         </a>
         <div className="mt-5">
           <a href="/why-me" className="text-gray-500 text-sm hover:text-white transition-colors duration-300">

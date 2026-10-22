@@ -8,6 +8,12 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 }
 
+// The title and subtitle only slide, so they are painted at once instead of waiting for JavaScript to fade them in.
+const slideUp = {
+  hidden: { y: 24 },
+  show: { y: 0 },
+}
+
 export default function PageHero({
   eyebrow,
   title,
@@ -41,7 +47,7 @@ export default function PageHero({
         <motion.h1
           initial="hidden"
           animate="show"
-          variants={fadeUp}
+          variants={slideUp}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
           className="mt-5 text-4xl sm:text-5xl md:text-6xl font-bold text-white text-balance"
         >
@@ -51,7 +57,7 @@ export default function PageHero({
         <motion.p
           initial="hidden"
           animate="show"
-          variants={fadeUp}
+          variants={slideUp}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
           className="mt-4 text-base md:text-lg text-gray-400 leading-relaxed text-balance max-w-2xl mx-auto"
         >

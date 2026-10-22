@@ -1,14 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { BOOKING_URL } from '@/lib/site'
 
 export default function Hero() {
   const skills = [
     'Flutter',
-    'Supabase',
-    'AI Features',
-    'Mobile Apps',
-    'SaaS Platforms',
+    'FHIR',
+    'HIPAA-aware',
+    'Stripe / Razorpay',
+    '5 years in production',
   ]
 
   // Duplicate for seamless loop
@@ -86,26 +87,26 @@ export default function Hero() {
 
         {/* Main Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center text-balance leading-tight"
         >
-          Mobile App Developer in Ahmedabad —{' '}
+          Secure women&apos;s health apps,{' '}
           <br className="hidden md:block" />
-          <span className="bg-gradient-to-r from-white via-gray-200 to-gray-500 bg-clip-text text-transparent">
-            I Turn Startup Ideas into Live Apps
+          <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+            built in weeks, not months.
           </span>
         </motion.h1>
 
         {/* Subtext */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.22 }}
           className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto text-balance"
         >
-          You bring the idea — I design, build, and launch your iOS &amp; Android app, backend included. Most startups go live in 4–8 weeks, not months.
+          I&apos;m Amin, a Flutter developer. I build private iOS and Android apps for pregnancy, postpartum, fertility and menopause startups, and connect them to hospital records.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -116,11 +117,11 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center gap-4"
         >
           <a
-            href="#my-work"
+            href={BOOKING_URL}
             className="group relative px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-full font-semibold text-base md:text-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-white/20"
           >
             <span className="relative z-10 flex items-center gap-2">
-              See My Work
+              Book a 20-min call
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -132,10 +133,10 @@ export default function Hero() {
             </span>
           </a>
           <a
-            href="#contact"
+            href="#my-work"
             className="px-8 md:px-10 py-3 md:py-4 glassmorphism text-white rounded-full font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10"
           >
-            Let&apos;s Talk
+            See my work
           </a>
         </motion.div>
 

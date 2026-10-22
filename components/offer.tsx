@@ -10,45 +10,42 @@ const fadeUp = {
 
 const packages = [
   {
-    name: 'MVP Launch',
-    tagline: 'Full-stack Flutter + Supabase mobile app — from zero to App Store.',
-    description: 'Perfect for founders ready to validate their idea.',
+    name: 'Pilot App',
+    tagline: 'A secure iOS and Android app, ready for your first patients.',
+    description: 'For teams with a pilot or launch date.',
     badge: 'MOST POPULAR',
     features: [
-      'User Authentication',
-      'Core Product Features',
-      'Admin Dashboard',
-      'Database & Backend',
-      'Mobile App or Web App',
-      'Deployment',
-      'Analytics Setup',
+      'Sign-up and secure login',
+      'Your core patient features',
+      'Encrypted storage of patient data',
+      'Privacy checks before release',
+      'App Store and Google Play release',
+      'Code, docs and a walkthrough',
     ],
   },
   {
-    name: 'Growth',
-    tagline: 'Scale your Flutter MVP with AI features, payments, and advanced Supabase backend.',
-    description: 'Scale your MVP with advanced features.',
-    badge: 'ACCELERATE',
+    name: 'Connected App',
+    tagline: 'Everything in Pilot App, plus hospital records and payments.',
+    description: 'For apps that need clinical data.',
+    badge: 'CLINICAL DATA',
     features: [
-      'Everything in MVP Launch',
-      'Payment Integration',
-      'Notifications',
-      'Advanced User Roles',
-      'AI Features',
-      'Performance Optimization',
+      'Everything in Pilot App',
+      'Hospital record access through FHIR',
+      'Patient and care-team roles',
+      'Stripe or Razorpay payments',
+      'Push notifications without patient details',
     ],
   },
   {
-    name: 'Partnership',
-    tagline: 'Ongoing Flutter development and Supabase backend support as your startup grows.',
-    description: 'Ongoing support as you scale.',
+    name: 'Ongoing Support',
+    tagline: 'Keep improving the app after launch.',
+    description: 'For apps that are already live.',
     badge: 'SUPPORT',
     features: [
-      'Feature Development',
-      'Bug Fixes',
-      'Product Improvements',
-      'Technical Support',
-      'Scaling Assistance',
+      'New features',
+      'Bug fixes',
+      'Security updates',
+      'Help with your next release',
     ],
   },
 ]
@@ -92,7 +89,7 @@ export default function Offer() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
         </span>
-        <span className="text-xs md:text-sm text-gray-300 font-medium tracking-wide">Service Packages</span>
+        <span className="text-xs md:text-sm text-gray-300 font-medium tracking-wide">Pricing</span>
       </motion.div>
 
       {/* Heading */}
@@ -104,7 +101,7 @@ export default function Offer() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.08 }}
         className="mt-5 text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center text-balance"
       >
-        Simple, Transparent Pricing
+        Fixed-price packages
       </motion.h2>
 
       <motion.p
@@ -115,7 +112,7 @@ export default function Offer() {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
         className="mt-4 text-base md:text-lg text-gray-400 text-center max-w-xl leading-relaxed text-balance"
       >
-        Pick a lane. Every package includes full technical support and a quality guarantee.
+        After our call you get a written scope and one price within 48 hours.
       </motion.p>
 
       {/* Segmented tab switcher */}
@@ -162,7 +159,7 @@ export default function Offer() {
               {pkg.badge}
             </span>
 
-            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-white">{pkg.name} Package</h3>
+            <h3 className="mt-4 text-2xl md:text-3xl font-bold text-white">{pkg.name}</h3>
             <p className="mt-2 text-sm md:text-base text-gray-300 font-medium">{pkg.tagline}</p>
             <p className="mt-1 text-sm md:text-base text-gray-500">{pkg.description}</p>
 
@@ -185,7 +182,7 @@ export default function Offer() {
               href="#contact"
               className="mt-10 block w-full text-center px-6 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-              Get Started
+              Book a 20-min call
             </a>
           </motion.div>
         </AnimatePresence>
@@ -200,12 +197,12 @@ export default function Offer() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="mt-10 md:mt-12 text-center"
       >
-        <p className="text-gray-400 text-sm md:text-base">Not sure which package? Let&apos;s discuss your project.</p>
+        <p className="text-gray-400 text-sm md:text-base">Not sure which package fits?</p>
         <a
           href="#contact"
           className="mt-4 inline-block px-8 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 hover:border-white/40 transition-all duration-300"
         >
-          Schedule a Free Consultation
+          Book a 20-min call
         </a>
         <div className="mt-5">
           <a href="/pricing" className="text-gray-500 text-sm hover:text-white transition-colors duration-300">
