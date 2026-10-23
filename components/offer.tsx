@@ -57,7 +57,7 @@ export default function Offer() {
   return (
     <section
       id="offer"
-      className="relative isolate w-full min-h-svh flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
+      className="relative isolate w-full flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
     >
       {/* Spotlight glow behind the panel */}
       <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center">

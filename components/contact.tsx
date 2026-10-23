@@ -31,7 +31,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate w-full min-h-svh flex flex-col justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
+      className="relative isolate w-full flex flex-col justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -134,13 +134,6 @@ export default function Contact() {
           >
             <ContactForm />
           </motion.div>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-16 md:mt-20 pt-8 border-t border-white/10">
-          <p className="text-gray-500 text-sm">
-            © 2025 Amin Ganja · Flutter developer for women&apos;s health apps · Ahmedabad, India
-          </p>
         </div>
       </div>
     </section>

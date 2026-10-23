@@ -20,11 +20,15 @@ export type Block =
 export type Post = {
   slug: string
   title: string
+  seoTitle?: string // full <title> when "title | Amin Ganja" would run past 60 characters
   description: string
   category: string
+  service?: string // slug of the matching /services page, linked from the end of the post
   datePublished: string // ISO date
   dateModified: string
-  cover: { src: string; alt: string; credit: string; creditUrl: string }
+  // credit is only for stock photos; leave it out for images made for the site
+  cover: { src: string; alt: string; credit?: string; creditUrl?: string }
+  ogImage?: string // 1200x630 share image; falls back to a crop of the cover
   sources: { label: string; href: string }[]
   body: Block[]
 }
@@ -34,8 +38,220 @@ const unsplash = (id: string, w = 1600) =>
 
 const posts: Post[] = [
   {
+    slug: 'hipaa-compliant-push-notifications-pregnancy-apps',
+    title: 'HIPAA Compliant Push Notifications for Pregnancy Apps',
+    seoTitle: 'HIPAA Compliant Push Notifications for Pregnancy Apps',
+    service: 'pregnancy-postpartum-app-development',
+    description:
+      "HIPAA compliant push notifications for pregnancy and women's health apps, plus two quieter leaks founders miss: crash logs and analytics event names.",
+    category: 'Privacy',
+    datePublished: '2026-10-23',
+    dateModified: '2026-10-23',
+    cover: {
+      src: '/blog/hipaa-compliant-push-notifications-pregnancy-apps.jpg',
+      alt: 'Two pregnancy app push notifications on a locked phone: one leaks "Week 7: your baby is the size of a blueberry", the private one says "You have a new update"',
+    },
+    ogImage: '/blog/hipaa-compliant-push-notifications-pregnancy-apps-og.jpg',
+    sources: [
+      {
+        label:
+          'FTC (2021), Developer of Popular Women\'s Fertility-Tracking App Settles FTC Allegations that It Misled Consumers About the Disclosure of their Health Data (Flo Health)',
+        href: 'https://www.ftc.gov/news-events/news/press-releases/2021/01/developer-popular-womens-fertility-tracking-app-settles-ftc-allegations-it-misled-consumers-about',
+      },
+      {
+        label:
+          'FTC (2023), Ovulation Tracking App Premom Will be Barred from Sharing Health Data for Advertising Under Proposed FTC Order',
+        href: 'https://www.ftc.gov/news-events/news/press-releases/2023/05/ovulation-tracking-app-premom-will-be-barred-sharing-health-data-advertising-under-proposed-ftc',
+      },
+      {
+        label:
+          'FTC (2023), FTC Enforcement Action to Bar GoodRx from Sharing Consumers\' Sensitive Health Info for Advertising',
+        href: 'https://www.ftc.gov/news-events/news/press-releases/2023/02/ftc-enforcement-action-bar-goodrx-sharing-consumers-sensitive-health-info-advertising',
+      },
+      {
+        label: 'FTC (2024), FTC Finalizes Changes to the Health Breach Notification Rule',
+        href: 'https://www.ftc.gov/news-events/news/press-releases/2024/04/ftc-finalizes-changes-health-breach-notification-rule',
+      },
+      {
+        label: 'Android Developers, Create a notification: Set lock screen visibility',
+        href: 'https://developer.android.com/develop/ui/views/notifications/build-notification',
+      },
+      {
+        label: 'Apple Developer Documentation, hiddenPreviewsBodyPlaceholder (UNNotificationCategory)',
+        href: 'https://developer.apple.com/documentation/usernotifications/unnotificationcategory/hiddenpreviewsbodyplaceholder',
+      },
+      {
+        label: 'Courier, HIPAA-compliant notifications',
+        href: 'https://www.courier.com/blog/hipaa-compliant-notifications',
+      },
+      {
+        label: 'Google Cloud, HIPAA compliance on Google Cloud (list of covered products)',
+        href: 'https://docs.cloud.google.com/docs/security/compliance/hipaa',
+      },
+      {
+        label:
+          'Hassan et al. (2024), What is in Your App? Uncovering Privacy Risks of Female Health Applications, CHI EA \'24 (arXiv 2310.14490)',
+        href: 'https://ar5iv.labs.arxiv.org/html/2310.14490',
+      },
+    ],
+    body: [
+      {
+        type: 'p',
+        text: 'A pregnancy app sends a friendly reminder: "Week 8: your baby is the size of a raspberry." It lands on a locked phone lying face up on a desk at work. Anyone walking past now knows something the user may not have told her own family yet.',
+      },
+      {
+        type: 'p',
+        text: "That leak came from a push notification, and it's one of the easiest privacy mistakes to make in a women's health app. If you're a founder trying to get HIPAA compliant push notifications right, most of the fix is about what goes in the message and where the details live. I'm Amin, a Flutter developer who builds patient apps that connect to clinical data. This post covers push notifications first, then two quieter leaks: crash logs and analytics event names.",
+      },
+      { type: 'h2', text: 'Why HIPAA compliant push notifications start with the lock screen' },
+      {
+        type: 'p',
+        text: "Once a notification arrives, the phone decides where it shows up: the lock screen, a smartwatch, or a tablet the whole family shares, and your login screen can't stop any of that.",
+      },
+      {
+        type: 'p',
+        text: "The message also travels through Apple's or Google's push service. Courier, a notification company, points out that you usually have no business associate agreement (BAA) with those services, and that this covers the hidden data fields in the payload too.",
+      },
+      {
+        type: 'p',
+        text: 'In women\'s health, one line can say a lot. "Time for your progesterone shot" tells a coworker that someone is going through IVF.',
+      },
+      { type: 'h3', text: 'The Android detail most teams miss' },
+      {
+        type: 'p',
+        text: 'Android lets an app choose how much of a notification shows on the lock screen. Google\'s documentation describes three levels. VISIBILITY_PUBLIC shows everything and VISIBILITY_SECRET shows nothing. VISIBILITY_PRIVATE is the one most teams pick, and it still shows the app icon and the notification title. Only the body is hidden.',
+      },
+      {
+        type: 'p',
+        text: 'So if your title says "Your glucose test result is ready", private mode does not protect you. The title has to be safe on its own. Android also lets you attach a second, safe version with setPublicVersion, and the lock screen shows that one instead. Google notes that the user always has final control over the lock screen, so don\'t depend on their settings either.',
+      },
+      { type: 'h3', text: 'What I would do on iOS' },
+      {
+        type: 'p',
+        text: "iPhone users can hide notification previews, but as Courier puts it, that setting isn't yours to control. Apple gives developers hiddenPreviewsBodyPlaceholder, a property on a notification category that sets the placeholder text shown when previews are disabled. Set it, then write every notification as if previews are on.",
+      },
+      { type: 'h3', text: 'The pattern that works on both' },
+      {
+        type: 'ul',
+        items: [
+          'Write generic text, like "You have a new update from your care team" or "Time for today\'s check-in".',
+          'Send a data-only push that carries an ID and nothing clinical, and let the app fetch the real content after the user logs in.',
+          'Show the details inside the app, behind login or a biometric lock.',
+          'If users can pick their reminder wording, make the most discreet option the default.',
+        ],
+      },
+      {
+        type: 'img',
+        src: unsplash('photo-1514464750060-00e6e34c8b8c', 1400),
+        alt: 'A person holding a smartphone in one hand',
+        caption: 'Assume someone else can see the screen, and write every notification for that moment.',
+        credit: 'Jamie Street on Unsplash',
+        creditUrl: 'https://unsplash.com/photos/person-holding-phone-33oxtOMk6Ac',
+      },
+      { type: 'h2', text: 'Leak two: PHI in crash logs' },
+      {
+        type: 'p',
+        text: 'Crash reporting tools like Crashlytics and Sentry record what the app was doing when it broke. Courier notes that they can capture request payloads and stack traces automatically. If a developer left a debug print with a patient name or a blood pressure reading, it can end up in a dashboard your whole team can open.',
+      },
+      {
+        type: 'p',
+        text: "Google Cloud publishes the list of products covered by its HIPAA BAA. When I checked it this week, Firestore was on it, but Firebase Analytics, Crashlytics and Cloud Messaging were not. The same page says that if you can't disable a service, you must not use it for PHI. You can still use Crashlytics, as long as nothing you send it is health data. That means a logger that redacts by default, no full API responses in logs, and internal IDs in place of names.",
+      },
+      { type: 'h2', text: 'Leak three: analytics event names' },
+      {
+        type: 'p',
+        text: 'A developer adds an analytics event called pregnancy_week_8_viewed because it makes the funnel easy to read. Now an analytics vendor holds a list of pregnant users.',
+      },
+      {
+        type: 'p',
+        text: 'That is close to what the FTC described in the Flo Health case in 2021. Flo, a period and ovulation app used by more than 100 million people, sent health data, including the fact of a user\'s pregnancy, to companies such as Facebook and Google as "app events". The settlement required Flo to get users\' consent before sharing their health information.',
+      },
+      {
+        type: 'p',
+        text: "In 2023 the FTC said the fertility app Premom shared users' sexual and reproductive health data with AppsFlyer and Google through SDKs. Its developer agreed to pay a $100,000 civil penalty under the Health Breach Notification Rule. Earlier that year GoodRx agreed to a $1.5 million civil penalty in the FTC's first action under the same rule, for sharing health information with Facebook, Google and other companies.",
+      },
+      {
+        type: 'p',
+        text: 'A study presented at CHI 2024 looked at seven popular female health apps on Android. Five included Firebase Analytics, and none followed the principle of data minimization.',
+      },
+      {
+        type: 'p',
+        text: 'The fix is simple. Use neutral event names like content_viewed with an ID that only your own server can map back, and keep conditions and pregnancy weeks out of property values.',
+      },
+      { type: 'h2', text: 'HIPAA or the FTC Health Breach Notification Rule: which applies to you?' },
+      {
+        type: 'p',
+        text: 'Plenty of consumer pregnancy and period apps aren\'t covered by HIPAA at all, and they still have rules to follow. The FTC updated its Health Breach Notification Rule in 2024 and said it applies to health apps and similar technologies that HIPAA does not cover. Under this rule a "breach" includes an unauthorized disclosure as well as a security incident. Sending pregnancy data to an ad platform without permission can count. Notices to users must go out within 60 calendar days of discovery, and if 500 or more people are affected, the FTC has to be told at the same time.',
+      },
+      {
+        type: 'p',
+        text: "If your app works with clinicians, or pulls a patient's records from a clinic's system over SMART on FHIR, HIPAA may apply as well, depending on your contracts with those clinics. Check where you sit with a qualified lawyer. The engineering advice is the same either way.",
+      },
+      { type: 'h2', text: "What I'm doing in BloomCare" },
+      {
+        type: 'p',
+        text: "I'm building BloomCare, a prenatal blood pressure monitoring demo. It connects to a SMART on FHIR sandbox with synthetic test patients, so there are no real patients in it, and it's only a demo. I still treat the data as real, because habits carry over to client work.",
+      },
+      {
+        type: 'ul',
+        items: [
+          'All logging goes through one small logger that redacts by default, so a reading or a patient name never reaches a crash report.',
+          "Login tokens live in the phone's secure storage (Keychain on iOS, Keystore on Android).",
+          'The app shows a blank screen in the app switcher and asks for Face ID or a fingerprint when you come back.',
+          'This version sends no notifications. If it did, they would say "New readings to review" and nothing more.',
+        ],
+      },
+      { type: 'h2', text: 'A 10-minute privacy check for founders' },
+      {
+        type: 'p',
+        text: "All you need is a test phone and your developer, and you won't have to read any code.",
+      },
+      {
+        type: 'ul',
+        items: [
+          'Lock the phone and trigger every notification type the app sends. Read each one as a stranger would.',
+          'On Android, read the title by itself. That is what private mode still shows.',
+          'Ask for the list of analytics event names and screen names. Look for pregnancy weeks, conditions, medications or symptoms.',
+          'Open the crash reporting dashboard and read three recent crashes. Look for names, readings or whole API responses.',
+          'List every SDK in the app. For each one that could see health data, ask whether you have a BAA with that vendor or whether the data is stripped out first.',
+        ],
+      },
+      { type: 'h2', text: 'Questions founders ask' },
+      { type: 'h3', text: 'Can a push notification contain PHI?' },
+      {
+        type: 'p',
+        text: "It can, but it shouldn't. The text can appear on a lock screen or a smartwatch where others see it, and the payload passes through Apple's or Google's push service, which usually has no BAA with you. Send a generic message, then load the health details inside the app after the user logs in.",
+      },
+      { type: 'h3', text: 'Does HIPAA apply to my pregnancy app?' },
+      {
+        type: 'p',
+        text: "It depends on who you serve and what your contracts say. Many consumer pregnancy and period apps are outside HIPAA, but the FTC's Health Breach Notification Rule covers health apps that HIPAA doesn't, and it treats unauthorized sharing as a breach. Apps that work with clinics may face both. Check your case with a qualified lawyer.",
+      },
+      { type: 'h3', text: 'Is Firebase Crashlytics HIPAA compliant?' },
+      {
+        type: 'p',
+        text: "Crashlytics was not on Google Cloud's list of BAA-covered products when I checked in October 2026, and Google says not to use services outside that list for PHI. You can still use it for crash reports if no health data reaches it. Redact logs, breadcrumbs and custom keys before anything is sent.",
+      },
+      { type: 'h3', text: 'How do I hide notification content on the lock screen?' },
+      {
+        type: 'p',
+        text: "On Android, use private visibility with a safe public version, and remember the title still shows. On iOS, set a placeholder for hidden previews, but don't count on users hiding them. On both, the safest setup is a generic message plus a data-only push that fetches the details after login.",
+      },
+      {
+        type: 'p',
+        text: "If you're building a pregnancy, fertility, postpartum or menopause app and want someone to run this check with you, [book a 20-minute call](/contact). We'll go through your app together and I'll tell you what I would change first. You can also read how I approach [pregnancy and postpartum app development](/services/pregnancy-postpartum-app-development) and [HIPAA compliant Flutter apps](/services/hipaa-compliant-flutter-app-development), see [how I work](/process), or message me on LinkedIn.",
+      },
+      {
+        type: 'note',
+        text: 'This is engineering guidance, not legal advice. The case details and penalty figures come from the FTC pages listed under Sources. Rules and vendor BAA lists change, so check the current versions before you rely on them.',
+      },
+    ],
+  },
+  {
     slug: 'improve-user-engagement-health-tech-app',
     title: 'How to Improve User Engagement in a Health Tech App',
+    seoTitle: 'Health App User Engagement: What Works | Amin Ganja',
+    service: 'menopause-app-development',
     description:
       "Most people stop using health apps within weeks. Here's what the research says about why, and the practical changes that help users stick around.",
     category: 'Health Tech',
@@ -192,7 +408,7 @@ const posts: Post[] = [
       },
       {
         type: 'p',
-        text: "If you're building a health app and want a second pair of eyes on the engagement side, [get in touch](/contact). I'm happy to look at what you have, even if it's just a rough idea. You can also see [why founders work with me](/why-me).",
+        text: "If you're building a health app and want a second pair of eyes on the engagement side, [get in touch](/contact). I'm happy to look at what you have, even if it's just a rough idea. You can also see [the women's health apps I build](/services) or [why founders work with me](/why-me).",
       },
       {
         type: 'note',

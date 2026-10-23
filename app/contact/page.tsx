@@ -7,7 +7,7 @@ import ContactForm from '@/components/contact-form'
 export const metadata: Metadata = {
   title: "Contact Amin Ganja | Women's Health App Developer",
   description:
-    "Planning a women's health app? Send a message to Amin Ganja, a Flutter developer in Ahmedabad, India, and get a reply within a day.",
+    "Planning a women's health app? Send a message to Amin Ganja, a Flutter developer in Ahmedabad, India, and get an honest reply within a day.",
   alternates: { canonical: '/contact' },
   openGraph: {
     title: "Contact Amin Ganja | Women's Health App Developer",
@@ -51,8 +51,8 @@ export default function ContactPage() {
 
       <PageHero
         eyebrow="Get in Touch"
-        title="Let's talk about your app"
-        subtitle="Send a note and I'll reply within a day."
+        title="Contact a women's health app developer"
+        subtitle="Tell me about your app and your launch date. I'll reply within a day."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
@@ -61,6 +61,11 @@ export default function ContactPage() {
 
           {/* Left: links + FAQ */}
           <div>
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8">
+              Whether you have a full spec or two lines in a notes app, send it over. I&apos;ll read it, ask a few
+              questions if I need to, and tell you honestly whether I&apos;m the right developer for it. If not,
+              I&apos;ll try to point you to someone who is.
+            </p>
             <div className="border-t border-white/10">
               {links.map((link) => (
                 <a

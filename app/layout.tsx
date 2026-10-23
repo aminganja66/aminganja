@@ -2,7 +2,8 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import CursorGlow from '@/components/cursor-glow'
-import { siteUrl } from '@/lib/site'
+import { GOOGLE_SITE_VERIFICATION, siteUrl } from '@/lib/site'
+import { getAllServices } from '@/lib/services'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -50,6 +51,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: { canonical: '/' },
+  ...(GOOGLE_SITE_VERIFICATION && { verification: { google: GOOGLE_SITE_VERIFICATION } }),
   openGraph: {
     title: siteTitle,
     description: siteDescription,
@@ -113,6 +115,7 @@ const jsonLd = {
       },
       description:
         "Flutter developer who builds private, HIPAA-aware iOS and Android apps for women's health startups and connects them to hospital records through FHIR.",
+      worksFor: { '@id': `${siteUrl}/#service` },
       sameAs: [
         'https://www.linkedin.com/in/amin-ganja',
         'https://github.com/aminganja66',
@@ -157,14 +160,9 @@ const jsonLd = {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: "Women's health app services",
-        itemListElement: [
-          'Pregnancy and postpartum app development',
-          'Fertility and menopause app development',
-          'FHIR and SMART on FHIR integration',
-          'HIPAA-aware security and data protection',
-        ].map((name) => ({
+        itemListElement: getAllServices().map((s) => ({
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name },
+          itemOffered: { '@type': 'Service', name: s.h1, url: `${siteUrl}/services/${s.slug}` },
         })),
       },
     },
@@ -184,7 +182,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased">
+      {/* Extensions such as ColorZilla add attributes to <body> before React loads; ignore those mismatches here only */}
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <CursorGlow />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

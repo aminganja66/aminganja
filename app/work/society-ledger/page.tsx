@@ -3,15 +3,16 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowLeft } from 'lucide-react'
 import ReadingProgress from '@/components/reading-progress'
-import { siteUrl } from '@/lib/site'
+import { EXPERIENCE, siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Society Ledger: Flutter + Supabase Case Study',
+  title: 'SocietyLedger Case Study: Flutter + Supabase | Amin Ganja',
   description:
     'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
+  keywords: ['Flutter Supabase case study', 'society management app', 'Flutter developer portfolio', 'Supabase row level security'],
   alternates: { canonical: '/work/society-ledger' },
   openGraph: {
-    title: 'Society Ledger: Flutter + Supabase Case Study',
+    title: 'SocietyLedger Case Study: Flutter + Supabase | Amin Ganja',
     description:
       'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
     url: '/work/society-ledger',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Society Ledger: Flutter + Supabase Case Study',
+    title: 'SocietyLedger Case Study: Flutter + Supabase | Amin Ganja',
     description:
       'How I built a society management app with Flutter, Supabase and Clean Architecture, solving maintenance payment problems for Indian residential societies.',
     images: ['/my_society_ledger.png'],
@@ -396,7 +397,7 @@ export default function SocietyLedgerCaseStudy() {
               <span className="text-accent">Let&apos;s talk.</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-              I&apos;m a Flutter developer in Ahmedabad, India, with 5 years of experience. I now
+              I&apos;m a Flutter developer in Ahmedabad, India, with {EXPERIENCE} of experience. I now
               focus on women&apos;s health apps that keep patient data private. I&apos;m open to new
               projects.
             </p>

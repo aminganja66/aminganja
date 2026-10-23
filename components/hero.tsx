@@ -1,22 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BOOKING_URL } from '@/lib/site'
+import { BOOKING_URL, EXPERIENCE } from '@/lib/site'
 
 export default function Hero() {
   const skills = [
     'Flutter',
+    'Supabase',
     'FHIR',
     'HIPAA-aware',
     'Stripe / Razorpay',
-    '5 years in production',
+    `${EXPERIENCE} in production`,
   ]
 
   // Duplicate for seamless loop
   const repeatedSkills = [...skills, ...skills]
 
   return (
-    <section className="relative isolate w-full h-svh min-h-[640px] flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
+    <section className="relative isolate w-full min-h-svh flex flex-col items-center justify-center px-4 md:px-8 bg-background overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Grid */}
@@ -68,7 +69,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background pointer-events-none" />
       </div>
 
-      <div className="max-w-4xl w-full flex flex-col items-center gap-5 md:gap-7 pt-16 pb-14 md:pt-14 md:pb-16">
+      <div className="max-w-6xl w-full flex flex-col items-center gap-5 md:gap-7 [@media(max-height:760px)]:gap-4 pt-28 pb-24 [@media(max-height:760px)]:pb-12">
         {/* Eyebrow badge */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
@@ -90,7 +91,7 @@ export default function Hero() {
           initial={{ y: 24 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center text-balance leading-tight"
+          className="text-[clamp(2.25rem,min(6.5vw,9vh),4.5rem)] font-bold text-white text-center text-balance leading-[1.1]"
         >
           Secure women&apos;s health apps,{' '}
           <br className="hidden md:block" />
@@ -106,7 +107,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.22 }}
           className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto text-balance"
         >
-          I&apos;m Amin, a Flutter developer. I build private iOS and Android apps for pregnancy, postpartum, fertility and menopause startups, and connect them to hospital records.
+          I&apos;m Amin Ganja, a women&apos;s health app developer. I build private Flutter apps for pregnancy, postpartum, fertility and menopause startups, and connect them to hospital records.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -145,7 +146,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full pt-4 md:pt-6"
+          className="w-full max-w-4xl pt-4 md:pt-6 [@media(max-height:760px)]:pt-2"
         >
           <div className="relative">
             {/* Left mask */}
@@ -180,7 +181,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-3 md:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+        className="absolute bottom-3 md:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 [@media(max-height:760px)]:hidden"
       >
         <span className="text-[11px] uppercase tracking-widest text-gray-500">Scroll</span>
         <motion.div

@@ -49,7 +49,7 @@ export default function HowIWork() {
   return (
     <>
       <div ref={wrapperRef} id="how-i-work" className="relative lg:h-[300vh]">
-        <section className="relative isolate lg:sticky lg:top-0 min-h-svh lg:h-svh w-full flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden">
+        <section className="relative isolate lg:sticky lg:top-0 lg:h-svh w-full flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden">
           {/* Ambient glow */}
           <div className="absolute inset-0 -z-10 pointer-events-none">
             <div className="absolute w-[24rem] h-[24rem] rounded-full bg-white/[0.04] blur-[110px] top-0 left-1/2 -translate-x-1/2" />

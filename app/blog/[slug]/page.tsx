@@ -8,6 +8,7 @@ import SiteFooter from '@/components/site-footer'
 import BlogBody from '@/components/blog-body'
 import BlogCard from '@/components/blog-card'
 import { formatDate, getAllPosts, getPost, readingMinutes, siteUrl } from '@/lib/blog'
+import { getService } from '@/lib/services'
 
 export const dynamicParams = false
 
@@ -23,9 +24,9 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPost(slug)
   if (!post) return {}
-  const ogImage = post.cover.src.replace(/w=\d+/, 'w=1200&h=630')
+  const ogImage = post.ogImage ?? post.cover.src.replace(/w=\d+/, 'w=1200&h=630')
   return {
-    title: `${post.title} | Amin Ganja`,
+    title: post.seoTitle ?? `${post.title} | Amin Ganja`,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -53,6 +54,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound()
 
   const others = getAllPosts().filter((p) => p.slug !== post.slug)
+  const service = post.service ? getService(post.service) : undefined
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -61,11 +63,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         '@type': 'BlogPosting',
         headline: post.title,
         description: post.description,
-        image: post.cover.src,
+        image: [post.cover.src, post.ogImage]
+          .filter((src): src is string => Boolean(src))
+          .map((src) => (src.startsWith('/') ? `${siteUrl}${src}` : src)),
         datePublished: post.datePublished,
         dateModified: post.dateModified,
-        author: { '@type': 'Person', name: 'Amin Ganja', url: `${siteUrl}/` },
-        publisher: { '@type': 'Person', name: 'Amin Ganja', url: `${siteUrl}/` },
+        author: { '@type': 'Person', '@id': `${siteUrl}/#person`, name: 'Amin Ganja', url: `${siteUrl}/about` },
+        publisher: { '@type': 'Person', '@id': `${siteUrl}/#person`, name: 'Amin Ganja', url: `${siteUrl}/` },
         mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
         citation: post.sources.map((s) => s.href),
       },
@@ -118,12 +122,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 className="object-cover"
               />
             </div>
-            <figcaption className="mt-2 text-xs text-gray-500">
-              Photo:{' '}
-              <a href={post.cover.creditUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
-                {post.cover.credit}
-              </a>
-            </figcaption>
+            {post.cover.credit && (
+              <figcaption className="mt-2 text-xs text-gray-500">
+                Photo:{' '}
+                <a href={post.cover.creditUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                  {post.cover.credit}
+                </a>
+              </figcaption>
+            )}
           </figure>
 
           <div className="mt-10">
@@ -144,10 +150,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </section>
 
           <section className="mt-12 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
-            <h2 className="text-xl md:text-2xl font-bold text-white">Building a health or wellness app?</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white">Building a women&apos;s health app?</h2>
             <p className="mt-2 text-gray-400">
-              I build Flutter and Supabase MVPs for founders. See the{' '}
-              <Link href="/work/society-ledger" className="text-white underline underline-offset-4">case study</Link>,{' '}
+              I build private Flutter apps for femtech startups and clinics.{' '}
+              {service ? (
+                <>
+                  Read about{' '}
+                  <Link href={`/services/${service.slug}`} className="text-white underline underline-offset-4">
+                    {service.name.toLowerCase()}
+                  </Link>
+                  ,{' '}
+                </>
+              ) : (
+                <>
+                  See{' '}
+                  <Link href="/services" className="text-white underline underline-offset-4">what I build</Link>,{' '}
+                </>
+              )}
               check the <Link href="/pricing" className="text-white underline underline-offset-4">pricing</Link>, or just{' '}
               <Link href="/contact" className="text-white underline underline-offset-4">tell me about your idea</Link>.
             </p>

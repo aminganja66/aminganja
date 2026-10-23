@@ -1,9 +1,7 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import Navbar from '@/components/navbar'
 import Hero from '@/components/hero'
 import PainPoints from '@/components/pain-points'
+import Services from '@/components/services'
 import Faq from '@/components/faq'
 import WhoAmI from '@/components/who-am-i'
 import MyWork from '@/components/my-work'
@@ -12,26 +10,29 @@ import HowIWork from '@/components/how-i-work'
 import WhyMe from '@/components/why-me'
 import FeaturedBlog from '@/components/featured-blog'
 import Contact from '@/components/contact'
+import SiteFooter from '@/components/site-footer'
+import { getAllPosts } from '@/lib/blog'
 
 export default function Page() {
+  // Picked on the server so the whole blog doesn't ship to the browser with the homepage.
+  const latest = getAllPosts()[0]
   return (
     <div className="bg-background text-foreground">
       <Navbar />
       <main>
         <Hero />
         <PainPoints />
+        <Services />
         <WhoAmI />
         <MyWork />
         <Offer />
         <HowIWork />
         <WhyMe />
-        <FeaturedBlog />
+        {latest && <FeaturedBlog post={latest} />}
         <Faq />
         <Contact />
-        <div className="sr-only">
-          Amin Ganja is a Flutter developer for women's health and femtech startups. He builds HIPAA-aware iOS and Android apps for pregnancy, postpartum, fertility and menopause care, connects them to hospital records through FHIR, and works for a fixed price. Available for calls in US Eastern mornings.
-        </div>
       </main>
+      <SiteFooter />
     </div>
   )
 }

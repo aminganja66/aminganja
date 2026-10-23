@@ -4,16 +4,14 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import BlogCard from '@/components/blog-card'
-import { getAllPosts } from '@/lib/blog'
+import type { Post } from '@/lib/blog'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0 },
 }
 
-export default function FeaturedBlog() {
-  const post = getAllPosts()[0]
-  if (!post) return null
+export default function FeaturedBlog({ post }: { post: Post }) {
 
   return (
     <section

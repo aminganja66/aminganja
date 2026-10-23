@@ -7,23 +7,23 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: "App Case Studies | Amin Ganja, Flutter Developer",
+  title: 'Flutter App Case Studies | Amin Ganja',
   description:
-    "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
+    "Flutter and Supabase apps I've built and shipped, with the architecture, security and lessons behind each. I now focus on women's health apps for startups.",
   alternates: { canonical: '/work' },
   openGraph: {
-    title: "App Case Studies | Amin Ganja, Flutter Developer",
+    title: 'Flutter App Case Studies | Amin Ganja',
     description:
-      "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
+      "Flutter and Supabase apps I've built and shipped, with the architecture, security and lessons behind each. I now focus on women's health apps for startups.",
     url: '/work',
     images: [{ url: '/my_society_ledger.png' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "App Case Studies | Amin Ganja, Flutter Developer",
+    title: 'Flutter App Case Studies | Amin Ganja',
     description:
-      "Real mobile apps I've built and shipped with Flutter, and what I learned from each. I now focus on women's health apps for startups and clinical teams.",
+      "Flutter and Supabase apps I've built and shipped, with the architecture, security and lessons behind each. I now focus on women's health apps for startups.",
     images: ['/my_society_ledger.png'],
   },
 }
@@ -40,6 +40,21 @@ const caseStudies = [
   },
 ]
 
+const carriesOver = [
+  {
+    title: 'Access rules on the server',
+    body: 'SocietyLedger has three user roles and row-level security on all 12 database tables. A health app needs the same thing for patients, clinicians and admins.',
+  },
+  {
+    title: 'No raw queries from the app',
+    body: 'All 44 data operations run as PostgreSQL functions on the server, so the phone never decides who may read what. That is the pattern I use for patient data.',
+  },
+  {
+    title: 'A solo build with a fixed scope',
+    body: 'It went from idea to production-ready in 30 to 35 days, planned feature by feature before any code. Pilots run the same way.',
+  },
+]
+
 export default function WorkPage() {
   return (
     <div className="bg-background text-foreground">
@@ -47,13 +62,27 @@ export default function WorkPage() {
 
       <PageHero
         eyebrow="My Work"
-        title="Apps I've shipped"
-        subtitle="Real projects used by real people. More case studies are on the way."
+        title="Flutter app case studies"
+        subtitle="Apps I've designed, built and shipped on my own, and what I learned from each."
       />
 
       <main className="w-full px-4 md:px-8 pb-24">
+        <div className="max-w-3xl mx-auto space-y-5 text-base md:text-lg text-gray-300 leading-relaxed mb-14 md:mb-16">
+          <p>
+            Each case study covers the problem, the decisions I made, the stack, and what I would do differently.
+            I write them for founders who want to know how I think before they hire me, so they are light on
+            jargon.
+          </p>
+          <p>
+            My focus today is{' '}
+            <Link href="/services" className="text-white underline underline-offset-4">women&apos;s health apps</Link>
+            . The case study below is a product I built on my own from idea to launch. Women&apos;s health projects will
+            be added here as they are published.
+          </p>
+        </div>
+
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        <h2 className="sr-only">Case studies</h2>
+          <h2 className="sr-only">Case studies</h2>
           {caseStudies.map((cs) => (
             <Link
               key={cs.slug}
@@ -65,7 +94,7 @@ export default function WorkPage() {
                   src={cs.thumbnail}
                   alt={cs.title}
                   fill
-                  sizes="(min-width: 1024px) 400px, 100vw"
+                  sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
                   className="object-contain group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                 />
                 <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-black/60 border border-white/15 text-white backdrop-blur-sm">
@@ -100,10 +129,38 @@ export default function WorkPage() {
               <Plus className="w-5 h-5" />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed max-w-[16rem]">
-              More case studies are on the way.
+              Next up: BloomCare, a prenatal blood pressure monitoring demo built on a SMART on FHIR sandbox.
             </p>
           </div>
         </div>
+
+        <section className="max-w-3xl mx-auto mt-24">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">What carries over to a health app</h2>
+          <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-8">
+            A housing society app and a pregnancy app have little in common on the surface. Underneath, the hard
+            parts are similar: several kinds of users, private records that only some of them may see, and money or
+            health decisions that depend on the data being right.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {carriesOver.map((c) => (
+              <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <h3 className="text-base font-bold text-white mb-2">{c.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{c.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm md:text-base text-gray-400 leading-relaxed">
+            For the privacy side specifically, read{' '}
+            <Link href="/services/hipaa-compliant-flutter-app-development" className="text-white underline underline-offset-4">
+              how I build HIPAA compliant Flutter apps
+            </Link>{' '}
+            and the article on{' '}
+            <Link href="/blog/hipaa-compliant-push-notifications-pregnancy-apps" className="text-white underline underline-offset-4">
+              push notifications in pregnancy apps
+            </Link>
+            .
+          </p>
+        </section>
 
         <div className="max-w-6xl mx-auto text-center mt-20">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Want yours next?</h2>

@@ -1,5 +1,11 @@
-// The one place the site address lives. Set NEXT_PUBLIC_SITE_URL when a custom domain is connected.
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://aminganja.vercel.app').replace(/\/$/, '')
+// The one place the site address lives. NEXT_PUBLIC_SITE_URL can override it, for example on a staging deployment.
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.aminganja.com').replace(/\/$/, '')
+
+// Keep this in sync with LinkedIn, GitHub and any other profile that mentions experience.
+export const EXPERIENCE = '5 years'
+
+// Token from Google Search Console's "HTML tag" method. Leave empty when the domain is verified through DNS.
+export const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''
 
 // Swap this for your Cal.com or Calendly link once it exists.
 // Until then the buttons scroll to the contact form.

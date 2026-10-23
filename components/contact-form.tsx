@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { track } from '@vercel/analytics'
 
 const CONTACT_EMAIL = 'amin.ganja@outlook.com'
 const inputClass =
@@ -27,6 +28,8 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       })
       if (!res.ok) throw new Error('failed')
+      // Conversion event for Vercel Web Analytics. Only the page path is sent, never what the visitor typed.
+      track('contact_form_submitted', { page: window.location.pathname })
       setStatus('sent')
       setFormData({ name: '', email: '', message: '', website: '' })
     } catch {

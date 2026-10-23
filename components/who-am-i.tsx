@@ -3,6 +3,7 @@
 import { useRef, type ReactNode, type MouseEvent } from 'react'
 import Image from 'next/image'
 import { motion, useMotionValue, useTransform, type MotionValue } from 'framer-motion'
+import { EXPERIENCE } from '@/lib/site'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -74,7 +75,7 @@ export default function WhoAmI() {
       id="who-am-i"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate w-full min-h-svh flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
+      className="relative isolate w-full flex flex-col items-center justify-center bg-background px-4 md:px-8 py-24 overflow-hidden"
     >
       {/* Ambient background glow */}
       <div className="absolute inset-0 -z-20 pointer-events-none">
@@ -154,7 +155,7 @@ export default function WhoAmI() {
         </motion.div>
 
         <FloatBadge mx={mouseX} my={mouseY} depthX={16} depthY={10} floatDelay={0} className="top-[4%] left-0 sm:left-[4%]">
-          <p className="text-sm font-semibold text-white whitespace-nowrap">5 Years</p>
+          <p className="text-sm font-semibold text-white whitespace-nowrap capitalize">{EXPERIENCE}</p>
           <p className="text-xs text-gray-400 whitespace-nowrap">Building real products</p>
         </FloatBadge>
 
