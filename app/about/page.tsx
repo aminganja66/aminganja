@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 import { EXPERIENCE } from '@/lib/site'
+import BookCallLink from '@/components/book-call-link'
 
 const title = "About Amin Ganja | Flutter Developer for Women's Health Apps"
 const description = `Amin Ganja is a Flutter developer with ${EXPERIENCE} of experience who builds private, HIPAA-aware apps for women's health startups. Based in Ahmedabad, India.`
@@ -163,12 +164,11 @@ export default function AboutPage() {
           {/* CTA */}
           <section className="text-center pt-4">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Have a pilot coming up?</h2>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </section>
 
         </div>

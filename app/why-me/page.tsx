@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import BookCallLink from '@/components/book-call-link'
 
 export const metadata: Metadata = {
   title: "Why Hire a Femtech App Developer Like Me | Amin Ganja",
@@ -124,12 +125,11 @@ export default function WhyMePage() {
             <p className="text-gray-400 mb-8 max-w-xl mx-auto text-sm md:text-base">
               Tell me about your users and your timeline. I&apos;ll tell you honestly if I can help.
             </p>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </div>
         </div>
       </main>

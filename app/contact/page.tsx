@@ -3,6 +3,7 @@ import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 import ContactForm from '@/components/contact-form'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: "Contact Amin Ganja | Women's Health App Developer",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 }
 
 const links = [
-  { label: 'Email', value: 'amin.ganja@outlook.com', href: 'mailto:amin.ganja@outlook.com' },
+  { label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
   { label: 'LinkedIn', value: 'in/amin-ganja', href: 'https://www.linkedin.com/in/amin-ganja' },
   { label: 'GitHub', value: 'aminganja66', href: 'https://github.com/aminganja66' },
 ]

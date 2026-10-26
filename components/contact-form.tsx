@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { track } from '@vercel/analytics'
+import { CONTACT_EMAIL } from '@/lib/site'
 
-const CONTACT_EMAIL = 'amin.ganja@outlook.com'
 const inputClass =
   'w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-colors'
 

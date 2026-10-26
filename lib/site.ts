@@ -7,9 +7,12 @@ export const EXPERIENCE = '5 years'
 // Token from Google Search Console's "HTML tag" method. Leave empty when the domain is verified through DNS.
 export const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''
 
-// Swap this for your Cal.com or Calendly link once it exists.
-// Until then the buttons scroll to the contact form.
-export const BOOKING_URL = '#contact'
+// Public inbox shown on the site and used for the contact form fallback link.
+export const CONTACT_EMAIL = 'amin@aminganja.com'
+
+// Set NEXT_PUBLIC_BOOKING_URL to your Cal.com or Calendly link (https://...).
+// Until it is set, the "Book a 20-min call" buttons open the contact page.
+export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || '/contact'
 
 export const faqs = [
   {

@@ -2,7 +2,8 @@
 
 import ContactForm from '@/components/contact-form'
 import { motion } from 'framer-motion'
-import { BOOKING_URL } from '@/lib/site'
+import BookCallLink from '@/components/book-call-link'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -12,8 +13,8 @@ const fadeUp = {
 const links = [
   {
     label: 'Email',
-    value: 'amin.ganja@outlook.com',
-    href: 'mailto:amin.ganja@outlook.com',
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
   },
   {
     label: 'LinkedIn',
@@ -82,12 +83,11 @@ export default function Contact() {
               Let&apos;s make sure your app is ready, and safe. Book a 20-minute call, or send a note and I&apos;ll reply within a day.
             </motion.p>
 
-            <a
-              href={BOOKING_URL}
+            <BookCallLink
               className="mt-8 inline-block px-8 py-3 md:py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300"
             >
               Book a 20-min call
-            </a>
+            </BookCallLink>
 
             <motion.div
               initial="hidden"

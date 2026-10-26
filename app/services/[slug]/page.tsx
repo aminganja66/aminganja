@@ -7,6 +7,7 @@ import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 import { getAllServices, getService } from '@/lib/services'
 import { siteUrl } from '@/lib/site'
+import BookCallLink from '@/components/book-call-link'
 
 export const dynamicParams = false
 
@@ -153,12 +154,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto mb-6">
               Tell me who the app is for and when you want to launch. I&apos;ll tell you honestly if I&apos;m a good fit.
             </p>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </section>
 
           <section>

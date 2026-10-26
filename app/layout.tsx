@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import CursorGlow from '@/components/cursor-glow'
-import { GOOGLE_SITE_VERIFICATION, siteUrl } from '@/lib/site'
+import { CONTACT_EMAIL, GOOGLE_SITE_VERIFICATION, siteUrl } from '@/lib/site'
 import { getAllServices } from '@/lib/services'
 import './globals.css'
 
@@ -99,7 +99,7 @@ const jsonLd = {
       jobTitle: 'Flutter Developer for Women\'s Health Apps',
       url: `${siteUrl}/`,
       image: `${siteUrl}/amin-profile.png`,
-      email: 'amin.ganja@outlook.com',
+      email: CONTACT_EMAIL,
       knowsAbout: [
         'Flutter',
         'FHIR R4',
@@ -153,7 +153,7 @@ const jsonLd = {
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'sales',
-        email: 'amin.ganja@outlook.com',
+        email: CONTACT_EMAIL,
         availableLanguage: 'English',
         hoursAvailable: 'Mo-Fr 09:00-12:00 America/New_York',
       },

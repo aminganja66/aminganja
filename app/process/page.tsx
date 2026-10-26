@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import BookCallLink from '@/components/book-call-link'
 
 export const metadata: Metadata = {
   title: "How I Build Women's Health Apps | Amin Ganja",
@@ -147,12 +148,11 @@ export default function ProcessPage() {
               Check the <Link href="/pricing" className="text-white underline underline-offset-4">packages</Link>, or
               go straight to a call.
             </p>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </div>
         </div>
       </main>

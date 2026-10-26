@@ -5,6 +5,7 @@ import { ArrowRight, Plus } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import BookCallLink from '@/components/book-call-link'
 
 export const metadata: Metadata = {
   title: 'Flutter App Case Studies | Amin Ganja',
@@ -167,12 +168,11 @@ export default function WorkPage() {
           <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto mb-6">
             Tell me what you&apos;re building and I&apos;ll tell you honestly if it&apos;s a fit.
           </p>
-          <Link
-            href="/contact"
+          <BookCallLink
             className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             Book a 20-min call
-          </Link>
+          </BookCallLink>
         </div>
       </main>
 

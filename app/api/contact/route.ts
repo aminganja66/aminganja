@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 // Sends the contact form through Resend. Set these in the hosting dashboard:
 //   RESEND_API_KEY    your Resend API key
-//   CONTACT_TO_EMAIL  the inbox that should receive messages
+//   CONTACT_TO_EMAIL  optional, the inbox that should receive messages (defaults to the site's contact email)
 //   CONTACT_FROM      optional sender, e.g. "Amin Ganja <hello@yourdomain.com>" (needs a verified domain)
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -28,8 +29,8 @@ export async function POST(req: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY
-  const to = process.env.CONTACT_TO_EMAIL
-  if (!apiKey || !to) {
+  const to = process.env.CONTACT_TO_EMAIL || CONTACT_EMAIL
+  if (!apiKey) {
     return NextResponse.json({ error: 'not_configured' }, { status: 503 })
   }
 
@@ -45,8 +46,13 @@ export async function POST(req: Request) {
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
       }),
     })
-    if (!res.ok) return NextResponse.json({ error: 'send_failed' }, { status: 502 })
-  } catch {
+    if (!res.ok) {
+      // Visible in the hosting logs only, never sent to the visitor
+      console.error('Contact form: Resend rejected the email', res.status, await res.text())
+      return NextResponse.json({ error: 'send_failed' }, { status: 502 })
+    }
+  } catch (err) {
+    console.error('Contact form: could not reach Resend', err)
     return NextResponse.json({ error: 'send_failed' }, { status: 502 })
   }
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BOOKING_URL } from '@/lib/site'
+import BookCallLink from '@/components/book-call-link'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -153,12 +153,11 @@ export default function WhyMe() {
         <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm md:text-base">
           Tell me about your users and your timeline. I&apos;ll tell you honestly if I can help.
         </p>
-        <a
-          href={BOOKING_URL}
+        <BookCallLink
           className="inline-block px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-300 shadow-lg hover:shadow-xl"
         >
           Book a 20-min call
-        </a>
+        </BookCallLink>
         <div className="mt-5">
           <a href="/why-me" className="text-gray-500 text-sm hover:text-white transition-colors duration-300">
             Read the full page →

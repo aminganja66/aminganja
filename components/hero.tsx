@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BOOKING_URL, EXPERIENCE } from '@/lib/site'
+import { EXPERIENCE } from '@/lib/site'
+import BookCallLink from '@/components/book-call-link'
 
 export default function Hero() {
   const skills = [
@@ -117,8 +118,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.34 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <a
-            href={BOOKING_URL}
+          <BookCallLink
             className="group relative px-8 md:px-10 py-3 md:py-4 bg-white text-black rounded-full font-semibold text-base md:text-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-white/20"
           >
             <span className="relative z-10 flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function Hero() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
-          </a>
+          </BookCallLink>
           <a
             href="#my-work"
             className="px-8 md:px-10 py-3 md:py-4 glassmorphism text-white rounded-full font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10"

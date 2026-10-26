@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import BookCallLink from '@/components/book-call-link'
 
 export const metadata: Metadata = {
   title: "Women's Health App Development Pricing | Amin Ganja",
@@ -183,8 +184,7 @@ export default function PricingPage() {
                     ))}
                   </div>
 
-                  <Link
-                    href="/contact"
+                  <BookCallLink
                     className={`mt-8 block w-full text-center px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-300 ${
                       featured
                         ? 'bg-white text-black hover:bg-gray-200'
@@ -192,7 +192,7 @@ export default function PricingPage() {
                     }`}
                   >
                     Book a 20-min call
-                  </Link>
+                  </BookCallLink>
                 </div>
               )
             })}
@@ -239,12 +239,11 @@ export default function PricingPage() {
           {/* CTA */}
           <div className="text-center mt-20">
             <p className="text-gray-400 text-base mb-4">Not sure which package fits?</p>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 hover:border-white/40 transition-all duration-300"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </div>
         </div>
       </main>

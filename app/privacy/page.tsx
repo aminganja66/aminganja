@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Amin Ganja',
@@ -37,11 +38,11 @@ export default function PrivacyPage() {
           </section>
           <section>
             <h2 className="text-lg md:text-xl font-bold text-white mb-3">Your choices</h2>
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">You can ask me to delete a message you sent, or to tell you what I hold about you, by emailing amin.ganja@outlook.com.</p>
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">You can ask me to delete a message you sent, or to tell you what I hold about you, by emailing {CONTACT_EMAIL}.</p>
           </section>
           <section>
             <h2 className="text-lg md:text-xl font-bold text-white mb-3">Contact</h2>
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">Amin Ganja, Ahmedabad, India. Email: amin.ganja@outlook.com.</p>
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">Amin Ganja, Ahmedabad, India. Email: {CONTACT_EMAIL}.</p>
           </section>
         </div>
       </main>

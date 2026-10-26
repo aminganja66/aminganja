@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Terms of Use | Amin Ganja',
@@ -37,7 +38,7 @@ export default function TermsPage() {
           </section>
           <section>
             <h2 className="text-lg md:text-xl font-bold text-white mb-3">Contact</h2>
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">Questions about these terms: amin.ganja@outlook.com.</p>
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-3">Questions about these terms: {CONTACT_EMAIL}.</p>
           </section>
         </div>
       </main>

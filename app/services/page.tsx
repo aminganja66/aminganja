@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar'
 import PageHero from '@/components/page-hero'
 import SiteFooter from '@/components/site-footer'
 import { getAllServices } from '@/lib/services'
+import BookCallLink from '@/components/book-call-link'
 
 const title = "Women's Health App Development Services | Amin Ganja"
 const description =
@@ -68,12 +69,11 @@ export default function ServicesPage() {
             <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto mb-6">
               Send me a few lines about your users and your launch date. I&apos;ll reply within a day.
             </p>
-            <Link
-              href="/contact"
+            <BookCallLink
               className="inline-block px-8 py-3 md:py-4 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors duration-300"
             >
               Book a 20-min call
-            </Link>
+            </BookCallLink>
           </div>
         </div>
       </main>
