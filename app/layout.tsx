@@ -73,7 +73,10 @@ export const metadata: Metadata = {
     'theme-color': '#0a0a0a',
   },
   icons: {
+    // Google Search needs a square favicon whose size is a multiple of 48px
     icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
