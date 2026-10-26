@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Logo from '@/components/logo'
 
 const navItems = [
   { label: 'Services', href: '/services' },
@@ -60,9 +61,9 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label="Amin Ganja, home"
-            className="text-xl md:text-2xl font-bold text-white hover:text-accent transition-colors"
+            className="text-white hover:text-accent transition-colors"
           >
-            ✦
+            <Logo />
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">

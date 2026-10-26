@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { DM_Serif_Display, Geist, Geist_Mono } from 'next/font/google'
 import CursorGlow from '@/components/cursor-glow'
 import { CONTACT_EMAIL, GOOGLE_SITE_VERIFICATION, siteUrl } from '@/lib/site'
 import { getAllServices } from '@/lib/services'
@@ -11,6 +11,8 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 })
+// Logo lockup name, matching the A1 Didone lockup in Figma
+const dmSerif = DM_Serif_Display({ variable: '--font-dm-serif', weight: '400', subsets: ['latin'] })
 
 const siteTitle = "Women's Health App Developer | HIPAA-Aware Apps | Amin Ganja"
 const siteDescription =
@@ -72,18 +74,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: '/apple-icon.png',
   },
@@ -136,6 +128,7 @@ const jsonLd = {
       name: "Amin Ganja, Women's Health App Development",
       url: `${siteUrl}/`,
       image: `${siteUrl}/og-image.png`,
+      logo: `${siteUrl}/logo.png`,
       description: siteDescription,
       provider: { '@id': `${siteUrl}/#person` },
       areaServed: 'Worldwide',
@@ -175,7 +168,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable}`}>
       <head>
         <script
           type="application/ld+json"

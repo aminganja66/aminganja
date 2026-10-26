@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getAllServices } from '@/lib/services'
+import Logo from '@/components/logo'
 
 const pages = [
   { label: 'About', href: '/about' },
@@ -17,6 +18,9 @@ export default function SiteFooter() {
   return (
     <footer className="w-full border-t border-white/10 bg-background px-4 md:px-8 py-10">
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
+        <Link href="/" aria-label="Amin Ganja, home" className="self-center lg:self-start text-white hover:text-accent transition-colors">
+          <Logo />
+        </Link>
         <nav aria-label="Services" className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-400">
           <Link href="/services" className="font-semibold text-white hover:text-emerald-300 transition-colors">Services</Link>
           {getAllServices().map((s) => (
